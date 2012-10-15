@@ -15,38 +15,17 @@ Ext.define('Sensor.view.Main', {
         			id: 'page1',
 	        	    html : 'Nieuws Pagina',
     	    	    style: 'background-color: #759E60',
-    	    	    
-            		items: {
-                	   xtype: 'toolbar',
-                	   docked: 'top',
-                	   style: 'border: none; font: 15px Arial black',
-                	   height: 50,
- 		               title: 'title',
- 		               items: [
- 		               		{text: 'Back', ui: 'back'},
- 		               		{text: 'Action', ui: 'action'},
- 		               		{text: 'Normal', ui: 'normal'},
- 		               		{text: 'Round', ui: 'round'}
- 		               ]
-            		},
-            		// define list item
+    	    	    // define list components
             		xtype: 'list',
-            		// fill store (array) with values
-            		store: {
-                		fields: ['name'],
-                		data: [
-                       	  {name: 'Jeroen'},
-                  		  {name: 'Sietze'},
-                  		  {name: 'Peter'}
-              		    ]
-    	    		},
-    	    		// place list
-    	    		itemTpl: '{name}',
-    	    		
-    	    		// listen when a record is clicked
+            		// fill list with values with values from SensorStore (array) 
+            		store: 'SensorStore',
+					// add list compent
+   	    			itemTpl: '{name}',    	    			
+    	    		// add select listener to each item 
     	    		listeners: {
         				select: function(view, record) {
-            			Ext.Msg.alert('Geselecteerd!', 'Je hebt geselecteerd ' + record.get('name'));
+            			console.log('Geselecteerd: ' + record.get('name'));
+            			//Ext.Msg.alert('Geselecteerd!', 'Je hebt geselecteerd ' + record.get('name'));
         				}
     				}
     	    	    
@@ -55,8 +34,7 @@ Ext.define('Sensor.view.Main', {
 	        		id: 'page2',
         			xtype: 'panel',
         			// Images on multiple devices with Sencha.io Src - add http://src.sencha.io/
-        			// Specifying sizes with Sencha.io Src - add http://src.sencha.io/320/200/
-        	    	html : 'Fotos<br /><img src="http://src.sencha.io/320/200/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
+        	    	html : 'Fotos<br /><img src="http://src.sencha.io/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
 	        	    style: 'background-color: #5E99CC',
 	        	    
         		}

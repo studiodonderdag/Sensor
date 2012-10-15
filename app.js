@@ -1,15 +1,15 @@
 
 Ext.application({
     name: 'Sensor',
-    views: ['Main'],
 
+//	controllers: ['Main'],    
+    views: ['Main'],
+	stores: ['SensorStore'],
+	models: ['SensorModel'],
+    
     launch: function() { 
-        // Initialize the main view
-        Ext.create('Sensor.view.Main');
+    	Ext.Viewport.add({
+        	xclass: 'Sensor.view.Main'
+    	});
     }
 });
-
-Ext.require([
-    'Ext.carousel.Carousel',
-]);
-
