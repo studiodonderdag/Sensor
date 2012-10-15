@@ -26,7 +26,7 @@ Ext.define('Sensor.view.Main', {
  		               		{text: 'Back', ui: 'back'},
  		               		{text: 'Action', ui: 'action'},
  		               		{text: 'Normal', ui: 'normal'},
- 		               		{text: 'Round', ui: 'round'},
+ 		               		{text: 'Round', ui: 'round'}
  		               ]
             		},
             		// define list item
@@ -37,11 +37,18 @@ Ext.define('Sensor.view.Main', {
                 		data: [
                        	  {name: 'Jeroen'},
                   		  {name: 'Sietze'},
-                  		  {name: 'Peter'},
+                  		  {name: 'Peter'}
               		    ]
     	    		},
     	    		// place list
-    	    		itemTpl: '{name}'
+    	    		itemTpl: '{name}',
+    	    		
+    	    		// listen when a record is clicked
+    	    		listeners: {
+        				select: function(view, record) {
+            			Ext.Msg.alert('Geselecteerd!', 'Je hebt geselecteerd ' + record.get('name'));
+        				}
+    				}
     	    	    
         		},
 	        	{
@@ -62,6 +69,8 @@ Ext.define('Sensor.view.Main', {
 		console.log('Initialization debugging info');	
 		this.callParent();
     }
+    
+    
 });
 
 
