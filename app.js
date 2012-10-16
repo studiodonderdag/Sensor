@@ -5,7 +5,7 @@ Ext.application({
 //	controllers: ['Main'],    
     views: ['Main'],
 	stores: ['SensorStore'],
-	models: ['SensorModel'],
+	models: ['SensorModel'],	
     
     launch: function() { 
     	Ext.Viewport.add({

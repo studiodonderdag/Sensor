@@ -3,7 +3,7 @@
 
 Ext.define('Sensor.view.Main', {
 	extend: 'Ext.Carousel',
-	requires: 'Ext.Carousel',
+	
 	xtype: 'mainview',
 	config: {
 		id: 'carousel',
@@ -15,12 +15,12 @@ Ext.define('Sensor.view.Main', {
         			id: 'page1',
 	        	    html : 'Nieuws Pagina',
     	    	    style: 'background-color: #759E60',
-    	    	    // define list components
+    	    	    // define list components        		
             		xtype: 'list',
             		// fill list with values with values from SensorStore (array) 
             		store: 'SensorStore',
-					// add list compent
-   	    			itemTpl: '{name}',    	    			
+					// add list compent            		
+   	    			itemTpl: '{title}',    	    			
     	    		// add select listener to each item 
     	    		listeners: {
         				select: function(view, record) {
