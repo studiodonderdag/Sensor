@@ -1,9 +1,10 @@
 Ext.define("Sensor.store.SensorStore", {
-extend: "Ext.data.Store",
-requires: ["Ext.data.proxy.JsonP", "Ext.dataview.List" ],
+extend: "Ext.data.TreeStore",
+requires: ["Ext.data.proxy.JsonP", "Ext.dataview.List", "Sensor.model.SensorModel"  ],
+
 config: {
-    model: "Sensor.model.SensorModel",
-    autoLoad: true,
+    model: "Sensor.model.SensorModel",            
+	root: { leaf: false },
     proxy: {
         type: 'jsonp',
         url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=5&q=http://www.snsr.nl/sites/sensor/nieuws/index-rss.xml',
@@ -12,5 +13,6 @@ config: {
             rootProperty: 'responseData.feed.entries'
             }
         }
+                
     }    
 });
