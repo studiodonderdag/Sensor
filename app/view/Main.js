@@ -1,7 +1,7 @@
 
 Ext.define('Sensor.view.Main', {
 	extend: 'Ext.Carousel',
-	requires: [ 'Ext.TabPanel', 'Sensor.store.SensorStore' ],
+	requires: [ 'Ext.TabPanel', 'Sensor.store.SensorStore', 'Ext.Img'],
 	
 	xtype: 'mainview',
 	config: {
@@ -10,20 +10,20 @@ Ext.define('Sensor.view.Main', {
 		indicator: true,
     	items: [
         		{
-        			xtype: 'nestedlist',
-                    title: 'Blog',
-                    iconCls: 'star',
-                    displayField: 'title',
-            		store: 'SensorStore',
+        			id: 'page1',
+        			xtype: 'img',
                     
-                    detailCard: {
-                        xtype: 'panel',
-                        scrollable: true,
-                        styleHtmlContent: true
-                    },
+                    title: 'Orion Nebula',
+    				description: 'The Orion Nebula is rather pretty',
 
-                    listeners: {
-                        itemtap: function(nestedList, list, index, element, post) {
+    				src: 'http://apod.nasa.gov/apod/image/1202/oriondeep_andreo_960.jpg',
+   				 
+
+                    
+                    },
+                    
+                    
+                   
 /*                    
 // We moeten op een manier de XML/HTML binnenhalen van het echte artikel
 // In de RSS feed zit niet het complete artikel
@@ -40,18 +40,15 @@ var myRequest = Ext.Ajax.request({
 });
 */                        	
                         	
-                        	console.log(post.get('link'));
-                            this.getDetailCard().setHtml(post.get('link'));
-                        }
-                    }        			
-        			
-        		},
+                        	
 	        	{
 	        		id: 'page2',
-        			xtype: 'panel',
+        			xtype: 'img',
         			// Images on multiple devices with Sencha.io Src - add http://src.sencha.io/
         	    	html : 'Fotos<br /><img src="http://src.sencha.io/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
 	        	    style: 'background-color: #5E99CC',
+	        	    
+	        	    
 	        	    
         		}
     	]    	
@@ -59,11 +56,19 @@ var myRequest = Ext.Ajax.request({
 
 	
 	initialize: function() {
-        // Do something
-		console.log('Initialization debugging info');	
-		this.callParent();
-    }
+    	this.callParent(arguments);
+		this.element.on('tap', this.onTap, this);
+    },
     
+    onTap: function() {
+        console.log('tab');	
+        
+        Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    	Ext.Viewport.add({
+        	xclass: 'Sensor.view.News'
+    	});
+    }    
     
 });
 
