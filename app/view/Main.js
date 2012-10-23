@@ -8,17 +8,16 @@ Ext.define('Sensor.view.Main', {
 		id: 'carousel',
 		fullscreen: true,
 		indicator: true,
+		
     	items: [
         		{
         			id: 'page1',
         			xtype: 'img',
-                    
+                    html : 'Nieuws',
                     title: 'Orion Nebula',
     				description: 'The Orion Nebula is rather pretty',
 
     				src: 'http://apod.nasa.gov/apod/image/1202/oriondeep_andreo_960.jpg',
-   				 
-
                     
                     },
                     
@@ -48,8 +47,6 @@ var myRequest = Ext.Ajax.request({
         	    	html : 'Fotos<br /><img src="http://src.sencha.io/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
 	        	    style: 'background-color: #5E99CC',
 	        	    
-	        	    
-	        	    
         		}
     	]    	
 	},
@@ -57,17 +54,31 @@ var myRequest = Ext.Ajax.request({
 	
 	initialize: function() {
     	this.callParent(arguments);
+    	
 		this.element.on('tap', this.onTap, this);
     },
     
     onTap: function() {
-        console.log('tab');	
+        console.log('tab');
+        console.log(this.getActiveIndex());
+        // Index 0 is page1 of the Carousel --> News.js
+        if (this.getActiveIndex() == 0) {
+        	        
+        	Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
         
-        Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-        
-    	Ext.Viewport.add({
+    		Ext.Viewport.add({
         	xclass: 'Sensor.view.News'
-    	});
+    		});
+    	}
+    	// Index 1 is page2 of the Carousel --> Photos.js
+    	if (this.getActiveIndex() == 1) {
+        	        
+        	Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    		Ext.Viewport.add({
+        	xclass: 'Sensor.view.Photos'
+    		});
+    	}
     }    
     
 });

@@ -3,7 +3,7 @@ Ext.application({
     name: 'Sensor',
 
 //	controllers: ['Main'],    
-    views: ['Main', 'News'],
+    views: ['Main', 'News', 'Photos'],
 	stores: ['SensorStore'],
 	models: ['SensorModel'],	
     
