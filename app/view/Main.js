@@ -16,9 +16,19 @@ Ext.define('Sensor.view.Main', {
                     html : 'Nieuws',
                     title: 'Orion Nebula',
     				description: 'The Orion Nebula is rather pretty',
-
-    				src: 'http://apod.nasa.gov/apod/image/1202/oriondeep_andreo_960.jpg',
+					src: './resources/images/bg_papier.jpg',
                     
+    					listeners: {
+        					tap: function() {
+            				console.log('News');
+        	        
+    						Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    						Ext.Viewport.add({
+    							xclass: 'Sensor.view.News'
+    							});
+       						}
+        				}
                     },
                     
                     
@@ -47,15 +57,28 @@ var myRequest = Ext.Ajax.request({
         	    	html : 'Fotos<br /><img src="http://src.sencha.io/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
 	        	    style: 'background-color: #5E99CC',
 	        	    
+	        	    	listeners: {
+        					tap: function() {
+            				console.log('Foto');
+        	        
+    						Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    						Ext.Viewport.add({
+    							xclass: 'Sensor.view.Photos'
+    							});
+       						}
+        				}
+	        	    
         		}
     	]    	
 	},
 
 	
-	initialize: function() {
-    	this.callParent(arguments);
+	/*initialize: function() {
+   // 	this.callParent(arguments);
     	
-		this.element.on('tap', this.onTap, this);
+		//this.element.on('tap', this.onTap, this);
+		this.innerElement.on('tap', this.onTap, this);
     },
     
     onTap: function() {
@@ -79,7 +102,7 @@ var myRequest = Ext.Ajax.request({
         	xclass: 'Sensor.view.Photos'
     		});
     	}
-    }    
+    } */   
     
 });
 

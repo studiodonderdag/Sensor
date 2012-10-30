@@ -1,5 +1,5 @@
 Ext.define('Sensor.view.News', {
-	extend: 'Ext.TabPanel',
+	extend: 'Ext.NestedList',
 	requires: [ 'Sensor.store.SensorStore' ],
 	
 	xtype: 'newsview',
@@ -7,6 +7,9 @@ Ext.define('Sensor.view.News', {
 		id: 'carousel',
 		fullscreen: true,
 		indicator: true,
+		styleHtmlContent: true,
+		showAnimation: true,
+		toolbar: true,
     	items: [
         		{
         			xtype: 'nestedlist',
@@ -14,12 +17,15 @@ Ext.define('Sensor.view.News', {
                     iconCls: 'star',
                     displayField: 'title',
             		store: 'SensorStore',
+            		
+            	
                     
                     detailCard: {
                         xtype: 'panel',
                         scrollable: true,
                         styleHtmlContent: true
                     },
+                    
 
                     listeners: {
                         itemtap: function(nestedList, list, index, element, post) {
@@ -39,23 +45,34 @@ var myRequest = Ext.Ajax.request({
 });
 */                        	
                         	
-                        	console.log(post.get('link'));
-                            this.getDetailCard().setHtml(post.get('link'));
+                        	console.log(post.get('content'));
+                            this.getDetailCard().setHtml(post.get('content'));
                         }
                     }        			
         			
+        		},
+        		{
+        			xtype: 'button',
+     				text: 'Hoofdmenu',
+     				ui: 'back',
+     				docked: 'bottom',
+     				     				
+     				listeners: {
+        				tap: function() {
+            			console.log('Hoofdmenu');
+        	        
+    					Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    					Ext.Viewport.add({
+    						xclass: 'Sensor.view.Main'
+    						});
+       					}
+        			}
         		}
+
 	        	
     	]    	
-	},
-
-	
-	initialize: function() {
-        // Do something
-		console.log('View News');	
-		this.callParent();
-    }
-    
+	}
     
 });
 
