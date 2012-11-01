@@ -1,28 +1,47 @@
 Ext.define('Sensor.view.Main', {
-	extend: 'Ext.Panel',
+	extend: 'Ext.Container',
 	requires: [ 'Ext.Carousel', 'Sensor.store.SensorStore', 'Ext.Img'],
 
 	config: {
-		//id: 'carousel',
 		fullscreen: true,
 		indicator: true,
-		
+    	scrollable: {
+     		direction: 'vertical',
+      		directionLock:true
+    	},
+    	layout: {
+      		type: 'vbox',
+      		align: 'stretch'
+    	},		
 		style: 'background-image: url(./resources/images/bg_papier.jpg)',
 		
     	items: [
         		{
-        			xtype: 'carousel',
-        				
+						xtype: 'container',
+        				items: [
+        					{
+        					//xtype: 'img',
+                    		//title: 'Sensor Logo',
+    						//description: 'Sensor logo',
+        					//src: './resources/images/logo_sensor.png'
+        					html : '<img src="./resources/images/logo_sensor.png">',        					
+        					}
+        				]
+        		},
+        		{
+						
+        				xtype: 'carousel',
                         height: 200,
-                        html: 'hallo',
+                        direction: 'horizontal',
+                        directionLock: true,
                         items: [
                         	{
                         	id: 'page1',
         					xtype: 'img',
                    			html : 'Nieuws',
-                    		title: 'Orion Nebula',
-    						description: 'The Orion Nebula is rather pretty',
-							src: './resources/images/logo_sensor.png',
+//                    		title: 'Orion Nebula',
+//    						description: 'The Orion Nebula is rather pretty',
+//							src: './resources/images/logo_sensor.png',
                     
     							listeners: {
         							tap: function() {
