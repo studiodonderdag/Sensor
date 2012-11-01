@@ -7,7 +7,7 @@ Ext.define('Sensor.view.Main', {
 		indicator: true,
     	scrollable: {
      		direction: 'vertical',
-      		directionLock:true
+      		directionLock: true
     	},
     	layout: {
       		type: 'vbox',
@@ -38,7 +38,7 @@ Ext.define('Sensor.view.Main', {
                         	{
                         	id: 'page1',
         					xtype: 'img',
-                   			html : 'Nieuws',
+                   			html : 'Nieuws<br /><img src="./resources/images/nieuws.jpg">',
 //                    		title: 'Orion Nebula',
 //    						description: 'The Orion Nebula is rather pretty',
 //							src: './resources/images/logo_sensor.png',
@@ -75,8 +75,19 @@ Ext.define('Sensor.view.Main', {
        							}
         					}
         				}]
+        		},
+        		{
+        				xtype: 'container',
+        				items: [
+        					{
+        					//xtype: 'img',
+                    		//title: 'Sensor Logo',
+    						//description: 'Sensor logo',
+        					//src: './resources/images/logo_sensor.png'
+        					html : 'Twitter',        					
+        					}
+        				]
         		}
-        		
     	]    	
 	},
 
