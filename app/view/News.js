@@ -13,7 +13,7 @@ Ext.define('Sensor.view.News', {
     	items: [
         		{
         			xtype: 'nestedlist',
-                    title: 'Blog',
+                    title: 'Nieuwsoverzicht',
                     iconCls: 'star',
                     displayField: 'title',
             		store: 'SensorStore',

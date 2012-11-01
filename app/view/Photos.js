@@ -2,11 +2,32 @@ Ext.define("Sensor.view.Photos", {
     extend: 'Ext.Panel',
 
     config: {
-        html: 'Foto album',
-        fullscreen: true
-    },
+    	fullscreen: true,
+    	
+    	items: [
+    			{
+    				html: 'Foto album',
+        
+    			},
     
-    initialize: function() {
-		console.log('View Photos');
+    			{
+        			xtype: 'button',
+     				text: 'Hoofdmenu',
+     				ui: 'back',
+     				docked: 'bottom',
+     				     				
+     				listeners: {
+        				tap: function() {
+            			console.log('Hoofdmenu');
+        	        
+    					Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+        
+    					Ext.Viewport.add({
+    						xclass: 'Sensor.view.Main'
+    						});
+       					}
+        			}
+    			}
+    		   ]
     }
 });
