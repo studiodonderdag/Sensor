@@ -4,6 +4,7 @@ Ext.define('Sensor.view.Main', {
 
 	config: {
 		fullscreen: true,
+		layout: 'fit',
 		indicator: true,
     	scrollable: {
      		direction: 'vertical',
@@ -18,31 +19,51 @@ Ext.define('Sensor.view.Main', {
     	items: [
         		{
 						xtype: 'container',
+						flex: 1,
+						styleHTMLContent: true,
+						width: 600,
+        				height: 110,
+						id: 'header',
         				items: [
         					{
-        					//xtype: 'img',
-                    		//title: 'Sensor Logo',
-    						//description: 'Sensor logo',
-        					//src: './resources/images/logo_sensor.png'
-        					html : '<img src="./resources/images/logo_sensor.png">',        					
+        					xtype: 'image',
+        					styleHTMLContent: true,
+        					src: './resources/images/logo_sensor.png',
+        					baseCls: 'sensorlogo',
+        					width: 285,
+        					height: 104,
+                    		title: 'Sensor Logo',
+    						description: 'Sensor logo',
         					}
         				]
         		},
         		{
 						
         				xtype: 'carousel',
-                        height: 200,
+        				flex: 2,
+        				baseCls: 'carousel',
+        				
+                        height: 300,
+                        width: 600,
                         direction: 'horizontal',
                         directionLock: true,
                         items: [
                         	{
-                        	id: 'page1',
-        					xtype: 'img',
-                   			html : 'Nieuws<br /><img src="./resources/images/nieuws.jpg">',
-//                    		title: 'Orion Nebula',
-//    						description: 'The Orion Nebula is rather pretty',
-//							src: './resources/images/logo_sensor.png',
-                    
+        					styleHTMLContent: true,
+        					items: [
+        					{
+        						xtype: 'label',
+        						id: 'menuItemLabel',
+        						baseCls: 'menuItemLabel',
+        						html : 'Nieuws', 
+        					},
+        					{
+        						xtype: 'image',
+        						src: './resources/images/nieuws.jpg',
+        						baseCls: 'menuItemLogo',
+        						width: 513,
+                    			title: 'Sensor Nieuws',
+    							description: 'Sensor Nieuws',
     							listeners: {
         							tap: function() {
             						console.log('News');
@@ -52,38 +73,49 @@ Ext.define('Sensor.view.Main', {
     								Ext.Viewport.add({
     									xclass: 'Sensor.view.News'
     									});
-       							}
+       								}
+        						},
         					}
+        					],
+
                     	},
            	
 	        			{
-	        				id: 'page2',
-        					xtype: 'img',
-        					// Images on multiple devices with Sencha.io Src - add http://src.sencha.io/
-        	    			html : 'Fotos<br /><img src="http://src.sencha.io/http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg">',
-	        	   			//style: 'background-color: #5E99CC',
-	        	    
+	        				
+	        				
+	        				items: [
+        					{
+        						xtype: 'label',
+        						id: 'menuItemLabel',
+        						baseCls: 'menuItemLabel',
+        						html : 'Fotos', 
+        					},
+        					{
+        						xtype: 'image',
+        						src: './resources/images/nieuws.jpg',
+        						baseCls: 'menuItemLogo',
+        						width: 513,
+                    			title: 'Sensor Fotos',
+    							description: 'Sensor Fotos',
+	        				        	    			
 	        	    			listeners: {
         							tap: function() {
-            						console.log('Foto');
-        	        
-    								Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-        
-    								Ext.Viewport.add({
-    								xclass: 'Sensor.view.Photos'
-    									});
-       							}
-        					}
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.Photos' });
+       								}
+        						}
+        					}],
         				}]
         		},
         		{
         				xtype: 'container',
+        				flex:3,
+        				styleHTMLContent: true,
+						width: 600,
+        				height: 30,
+						id: 'footer',
         				items: [
         					{
-        					//xtype: 'img',
-                    		//title: 'Sensor Logo',
-    						//description: 'Sensor logo',
-        					//src: './resources/images/logo_sensor.png'
         					html : 'Twitter',        					
         					}
         				]

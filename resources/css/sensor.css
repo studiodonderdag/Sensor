@@ -1,0 +1,39 @@
+
+
+#header {
+}
+
+#footer {
+}
+
+.sensorlogo {
+    opacity: 0.2;    
+}
+
+.carousel{
+	display:block;
+}
+
+.menuItemLogo {
+	display:block;
+	-webkit-border-radius: 1em !important;
+    border-radius: 1em !important;
+    text-align: center;
+    margin: 5px auto;
+    height: 250px;
+	max-width: 90%;
+	max-height: 90%;
+}
+
+.menuItemLabel {
+	display:block;
+	width:600px;
+	position:absolute;
+	top:200px;
+	height:30px;
+	background-color:white;
+	opacity: 0.5;
+	text-align: center;
+}
+
+
