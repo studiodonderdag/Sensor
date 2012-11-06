@@ -65,13 +65,8 @@ Ext.define('Sensor.view.Main', {
     							description: 'Sensor Nieuws',
     							listeners: {
         							tap: function() {
-            						console.log('News');
-        	        
-    								Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-        
-    								Ext.Viewport.add({
-    									xclass: 'Sensor.view.News'
-    									});
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.News' });
        								}
         						},
         					}
@@ -90,7 +85,7 @@ Ext.define('Sensor.view.Main', {
         					},
         					{
         						xtype: 'image',
-        						src: './resources/images/nieuws.jpg',
+        						src: './resources/images/fotos.jpg',
         						baseCls: 'menuItemLogo',
         						width: 513,
                     			title: 'Sensor Fotos',
