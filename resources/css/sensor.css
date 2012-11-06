@@ -1,63 +1,66 @@
 
 
-#header {
-}
 
 #footer {
 }
 
-.sensorLogo {
+#header {
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#header .sensorLogo {
 	float:left;
+    width: 40%;
 }
 
-.sensorLogo img {
+#header .sensorLogo img {
     /* opacity: 0.2; */
-    margin-left:15%;
-    margin-top:5%;
-    max-height:50%;
-    max-width:50%;
-    
+    width: 100%;
 }
 
 
-.hanLogo {
-	float:right;	
+#header .hanLogo {
+	float:right;
+	width: 15%;	
 }
 
-.hanLogo img {
+#header .hanLogo img {
     /* opacity: 0.2; */
-    margin-right:15%;
-    margin-top:20%;
-    max-height:50%;
-    max-width:50%;
+   width: 100%;
 }
-
-
-
-
 
 
 .carousel{
 	display:block;
+	width: 100%;
 }
+
 
 .menuItemLogo {
 	display:block;
+	text-align: center;
+}
+
+
+.menuItemLogo img {
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
-    text-align: center;
-    margin: 5px auto;
-    height: 250px;
+    width: 90%;
+    height: 100px;
 	max-width: 90%;
 	max-height: 90%;
 }
 
 .menuItemLabel {
 	display:block;
-	width:600px;
+	width:100%;
 	position:absolute;
-	top:200px;
-	height:30px;
+	top:65%;
+	height:40px;
+	line-height: 40px;
 	background-color:white;
 	opacity: 0.5;
 	text-align: center;
