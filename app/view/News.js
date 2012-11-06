@@ -44,9 +44,14 @@ var myRequest = Ext.Ajax.request({
     }
 });
 */                        	
-                        	
-                        	console.log(post.get('content'));
-                            this.getDetailCard().setHtml(post.get('content'));
+                        	// de image bij de RSS feed heet altijd more.jpg
+                        	// deze image staat op hetzelfde niveau als de index.xml 
+                        	var contentLink = post.get('link');
+                        	var imageLink = contentLink.substring(0,(contentLink.lastIndexOf("/"))) + "/more.jpg";
+                        	var imageLink = '<img src="' + imageLink + '"</img>';
+                        	//console.log( imageLink );                        	
+                        	var content = imageLink + post.get('content');
+                            this.getDetailCard().setHtml(content);
                         }
                     }        			
         			

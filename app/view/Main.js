@@ -53,7 +53,6 @@ Ext.define('Sensor.view.Main', {
         					items: [
         					{
         						xtype: 'label',
-        						id: 'menuItemLabel',
         						baseCls: 'menuItemLabel',
         						html : 'Nieuws', 
         					},
@@ -86,7 +85,6 @@ Ext.define('Sensor.view.Main', {
 	        				items: [
         					{
         						xtype: 'label',
-        						id: 'menuItemLabel',
         						baseCls: 'menuItemLabel',
         						html : 'Fotos', 
         					},
