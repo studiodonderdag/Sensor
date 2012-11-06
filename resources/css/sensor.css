@@ -6,9 +6,36 @@
 #footer {
 }
 
-.sensorlogo {
-    opacity: 0.2;    
+.sensorLogo {
+	float:left;
 }
+
+.sensorLogo img {
+    /* opacity: 0.2; */
+    margin-left:15%;
+    margin-top:5%;
+    max-height:50%;
+    max-width:50%;
+    
+}
+
+
+.hanLogo {
+	float:right;	
+}
+
+.hanLogo img {
+    /* opacity: 0.2; */
+    margin-right:15%;
+    margin-top:20%;
+    max-height:50%;
+    max-width:50%;
+}
+
+
+
+
+
 
 .carousel{
 	display:block;
@@ -16,8 +43,8 @@
 
 .menuItemLogo {
 	display:block;
-	-webkit-border-radius: 1em !important;
-    border-radius: 1em !important;
+	-webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
     text-align: center;
     margin: 5px auto;
     height: 250px;

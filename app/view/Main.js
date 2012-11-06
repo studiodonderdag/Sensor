@@ -22,19 +22,32 @@ Ext.define('Sensor.view.Main', {
 						flex: 1,
 						styleHTMLContent: true,
 						width: 600,
-        				height: 110,
+        				height: 75,
 						id: 'header',
         				items: [
         					{
         					xtype: 'image',
         					styleHTMLContent: true,
+        					//mode: 'image',
+        					mode: 'element',
         					src: './resources/images/logo_sensor.png',
-        					baseCls: 'sensorlogo',
+        					baseCls: 'sensorLogo',
         					width: 285,
         					height: 104,
                     		title: 'Sensor Logo',
     						description: 'Sensor logo',
-        					}
+        					},
+        					{
+        					xtype: 'image',
+        					styleHTMLContent: true,
+        					mode: 'image',
+        					src: './resources/images/logo_han.png',
+        					baseCls: 'hanLogo',
+        					width: 102,
+        					height: 70,
+                    		title: 'HAN Logo',
+    						description: 'HAN logo',
+        					},
         				]
         		},
         		{
