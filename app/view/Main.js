@@ -100,7 +100,7 @@ Ext.define('Sensor.view.Main', {
         					{
         						xtype: 'label',
         						baseCls: 'menuItemLabel',
-        						html : 'Fotos', 
+        						html : "Foto's", 
         					},
         					{
         						xtype: 'image',

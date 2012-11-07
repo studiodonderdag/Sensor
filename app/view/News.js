@@ -48,7 +48,7 @@ var myRequest = Ext.Ajax.request({
                         	// deze image staat op hetzelfde niveau als de index.xml 
                         	var contentLink = post.get('link');
                         	var imageLink = contentLink.substring(0,(contentLink.lastIndexOf("/"))) + "/more.jpg";
-                        	var imageLink = '<img src="' + imageLink + '"</img>';
+                        	var imageLink = '<img src="' + imageLink + '"width=100%</img>';
                         	//console.log( imageLink );                        	
                         	var content = imageLink + post.get('content');
                             this.getDetailCard().setHtml(content);
