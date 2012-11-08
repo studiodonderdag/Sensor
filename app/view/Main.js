@@ -3,9 +3,8 @@ Ext.define('Sensor.view.Main', {
 	requires: [ 'Ext.Carousel', 'Sensor.store.SensorStore', 'Ext.Img'],
 
 	config: {
-		width: function(){Ext.viewport.getWindowHeight( );},
-		height: function(){Ext.viewport.getWindowHeight( );},
 		fullscreen: true,
+		maxWidth: 640,
 		layout: 'fit',
 		indicator: true,
     	scrollable: {
@@ -23,7 +22,6 @@ Ext.define('Sensor.view.Main', {
 						xtype: 'container',
 						flex: 1,
 						styleHTMLContent: true,
-						//width: 600,
 						width: '100%',
         				height: 75,
 						id: 'header',
@@ -35,8 +33,6 @@ Ext.define('Sensor.view.Main', {
         					//mode: 'element',
         					src: './resources/images/logo_sensor.png',
         					baseCls: 'sensorLogo',
-        					//width: 285,
-        					//height: 104,
                     		title: 'Sensor Logo',
     						description: 'Sensor logo',
         					},
@@ -46,22 +42,17 @@ Ext.define('Sensor.view.Main', {
         					mode: 'image',
         					src: './resources/images/logo_han.png',
         					baseCls: 'hanLogo',
-        					//width: 102,
-        					//height: 70,
                     		title: 'HAN Logo',
     						description: 'HAN logo',
         					},
         				]
         		},
         		{
-						
         				xtype: 'carousel',
         				flex: 2,
-        				baseCls: 'carousel',
-        				
+        				baseCls: 'carousel',		
                         height: 275,
                         width: '100%',
-                        //width: 600,
                         direction: 'horizontal',
                         directionLock: true,
                         items: [
@@ -124,8 +115,7 @@ Ext.define('Sensor.view.Main', {
         		{
         				xtype: 'container',
         				flex:3,
-        				styleHTMLContent: true,        				
-						//width: 600,
+        				styleHTMLContent: true,
         				width: '100%',
         				height: 30,
 						id: 'footer',

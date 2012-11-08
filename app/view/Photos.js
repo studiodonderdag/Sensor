@@ -18,13 +18,8 @@ Ext.define("Sensor.view.Photos", {
      				     				
      				listeners: {
         				tap: function() {
-            			console.log('Hoofdmenu');
-        	        
-    					Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-        
-    					Ext.Viewport.add({
-    						xclass: 'Sensor.view.Main'
-    						});
+    						Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    						Ext.Viewport.add({ xclass: 'Sensor.view.Main' });
        					}
         			}
     			}
