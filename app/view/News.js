@@ -19,6 +19,7 @@ Ext.define('Sensor.view.News', {
                     
                     detailCard: {
                         xtype: 'panel',
+                        baseCls: 'detailCard',
                         scrollable: true,
                         styleHtmlContent: true,
                         maxWidth: 640,
