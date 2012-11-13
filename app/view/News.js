@@ -2,6 +2,8 @@ Ext.define('Sensor.view.News', {
 	extend: 'Ext.NestedList',
 	requires: [ 'Sensor.store.SensorStore' ],
 
+
+	
 	config: {
 		fullscreen: true,
 		maxWidth: 640,
@@ -12,13 +14,16 @@ Ext.define('Sensor.view.News', {
     	items: [
         		{
         			xtype: 'nestedlist',
-                    title: 'Nieuwsoverzicht',
-                    iconCls: 'star',
-                    displayField: 'title',
-            		store: 'SensorStore',
-                    
+                    store: 'SensorStore',
+                                  
+        			//title: 'Nieuwsoverzicht',
+                    //displayField: 'articleRoot',
+            		displayField: 'title',                    
+            		title: '',
+            		width: '350',
+                    //baseCls: 'blaah',
                     detailCard: {
-                        xtype: 'panel',
+                        xtype: 'container',
                         baseCls: 'detailCard',
                         scrollable: true,
                         styleHtmlContent: true,
@@ -26,11 +31,10 @@ Ext.define('Sensor.view.News', {
                     },
                     
                     listeners: {
-                        itemtap: function(nestedList, list, index, element, post) {                      	
+                        itemtap: function(nestedList, list, index, element, post) {
                         	// de image bij de RSS feed heet altijd more.jpg
                         	// deze image staat op hetzelfde niveau als de index.xml 
-                        	var articleLink = post.get('link');
-                        	var articleRoot = articleLink.substring(0,(articleLink.lastIndexOf("/")));
+                        	var articleRoot = post.get('articleRoot');
                         	var imageLink =  articleRoot + "/more.jpg";
                         	var imageLink = '<img src="' + imageLink + '"width=100%</img>';
 

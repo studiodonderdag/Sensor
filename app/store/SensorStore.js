@@ -3,7 +3,8 @@ extend: "Ext.data.TreeStore",
 requires: ["Ext.data.proxy.JsonP", "Ext.dataview.List", "Sensor.model.SensorModel"  ],
 
 config: {
-    model: "Sensor.model.SensorModel",            
+    model: "Sensor.model.SensorModel",
+    autoLoad: true,
 	root: { leaf: false },
     proxy: {
         type: 'jsonp',
@@ -12,7 +13,36 @@ config: {
             type: 'json',
             rootProperty: 'responseData.feed.entries'
             }
-        }
-                
-    }    
+        },
+        
+    // De load listener wordt gebruikt om aan ieder item in de SensorStore een articleRoot toe te voegen   
+    listeners : {
+		load: { fn: function(store, records, success) {
+            /*console.log('store - ' + store +
+                        ', typeof(store) - ' + typeof(store) +
+                        ', records - ' + records +
+                        ', records data - ' + records.data +
+                        ', success - ' + success +
+                        ', type of success - ' + typeof(success)+
+                        ', success length - ' + success.length);
+            if(records == true) {
+                console.log('records is data property...');
+            }
+            if(store == true) {
+                console.log('store is a data property...');
+            }
+            for(r in records) {
+                console.log(r + '\ttypeof(r) -> ' + typeof(r));
+            } */
+			
+            for(r in records) {
+            	var articleLink = records[r].data.link;
+            	records[r].data.articleRoot = articleLink.substring(0,(articleLink.lastIndexOf("/")));
+            	}
+			},
+			scope: this 
+		}    	
+    },    
+        
+    }   
 });

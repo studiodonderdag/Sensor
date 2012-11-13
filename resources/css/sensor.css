@@ -17,6 +17,7 @@
 }
 
 #header .sensorLogo img {
+	background-size: contain;
     width: 100%;
 }
 
@@ -67,8 +68,19 @@
 
 
 
-/* configuratie voor nieuws */
 
+
+/* configuratie voor nieuws */
+/*
+.x-list-normal .x-list-item .x-list-item-label {
+border-top: 1px solid #FF0000;
+}
+
+.x-list .x-list-item.x-item-selected .x-list-item-label {
+background-image: none;
+color: red;
+}
+*/
 #ext-viewport .detailCard {
 	background-color: #ffffff !important;
 }
