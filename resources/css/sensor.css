@@ -75,10 +75,10 @@
 }
 
 .NewsListItemBackground {
-	margin: 0 25%;
+	margin: 0 2%;
 	text-Align:center;
 	height: 100%;
-	width: 400px;
+	width: 100%;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
 	background-repeat:no-repeat;
