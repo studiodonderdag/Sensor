@@ -4,7 +4,7 @@ config: {
 	fields: [
    			'articleRoot', 'title', 'link', 'author', 'contentSnippet', 'content',
             {name: 'leaf', defaultValue: true}
-            ],
+            ]
 
 },
 

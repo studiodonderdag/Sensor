@@ -62,25 +62,49 @@
 	line-height: 40px;
 	/* background-color:white;
 	opacity: 0.2; */
-	background-color: rgba(255, 225, 225, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
+	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
 	text-align: center;
 }
 
 
 
+/* nieuws */
+.NewsListItem {
+	text-Align:center;
+	height: 150px;
+}
 
+.NewsListItemBackground {
+	margin: 0 25%;
+	text-Align:center;
+	height: 100%;
+	width: 400px;
+	-webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
+	background-repeat:no-repeat;
+	background-attachment:0% 50%;
+	background-position:center; 
+}
 
-/* configuratie voor nieuws */
-/*
+.NewsListItemText {
+	display:block;
+	width:100%;
+	position:relative;
+	top:40%;
+	overflow:visible;
+	line-height: 2em;
+	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
+	text-align: center;
+	color: #555555;
+	font-size:15px;
+}
+
+/* remove default grey line in listitems */
 .x-list-normal .x-list-item .x-list-item-label {
-border-top: 1px solid #FF0000;
+	border-top: none;
 }
 
-.x-list .x-list-item.x-item-selected .x-list-item-label {
-background-image: none;
-color: red;
-}
-*/
+/* detail card met volledige news item */
 #ext-viewport .detailCard {
 	background-color: #ffffff !important;
 }
@@ -96,3 +120,6 @@ color: red;
 
 
 
+
+
+c

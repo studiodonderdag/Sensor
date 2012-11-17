@@ -17,6 +17,7 @@ Ext.define('Sensor.view.Main', {
     	},		
 		style: 'background-image: url(./resources/images/bg_papier.jpg)',	
 		
+		// Eerste container voor het Sensor en HAN logo
     	items: [
         		{
 						xtype: 'container',
@@ -47,6 +48,7 @@ Ext.define('Sensor.view.Main', {
         					},
         				]
         		},
+        		// Eerste container met de Carousel
         		{
         				xtype: 'carousel',
         				flex: 2,
@@ -56,6 +58,7 @@ Ext.define('Sensor.view.Main', {
                         direction: 'horizontal',
                         directionLock: true,
                         items: [
+                        	// Carousel item nieuws
                         	{
         					styleHTMLContent: true,
         					items: [
@@ -76,17 +79,13 @@ Ext.define('Sensor.view.Main', {
     							listeners: {
         							tap: function() {
     									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    									Ext.Viewport.add({ xclass: 'Sensor.view.News' });
+    									Ext.Viewport.add({ xclass: 'Sensor.view.NewsList' });
        								}
         						},
-        					}
-        					],
-
-                    	},
-           	
-	        			{
-	        				
-	        				
+        					}],
+                    		},
+							// Carousel item foto's           	
+	        				{	        					        				
 	        				items: [
         					{
         						xtype: 'label',
@@ -110,8 +109,36 @@ Ext.define('Sensor.view.Main', {
        								}
         						}
         					}],
-        				}]
+        					},
+        					// Carousel item contact           	
+	        				{	        					        				
+	        				items: [
+        					{
+        						xtype: 'label',
+        						baseCls: 'menuItemLabel',
+        						html : "Contact", 
+        					},
+        					{
+        						xtype: 'image',
+        						mode: 'image',
+        						src: './resources/images/contact-header.jpg',
+        						baseCls: 'menuItemLogo',
+        						width: '100%',
+        						height: '100%',
+                    			title: 'Sensor Contact',
+    							description: 'Sensor Contact',
+	        				        	    			
+	        	    			listeners: {
+        							tap: function() {
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.Contact' });
+       								}
+        						}
+        					}],
+        					},        					
+        			]	
         		},
+        		// Laatste container met Twitter feed
         		{
         				xtype: 'container',
         				flex:3,
