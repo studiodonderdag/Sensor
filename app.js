@@ -4,8 +4,8 @@ Ext.application({
 
 //	controllers: ['Main'],    
     views: ['Main', 'NewsList', 'Photos'],
-	stores: ['SensorStore'],
-	models: ['SensorModel'],	
+	stores: ['SensorStore', 'TwitterStore'],
+	models: ['SensorModel', 'TwitterModel'],	
     
     launch: function() { 
     	Ext.Viewport.add({

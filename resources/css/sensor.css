@@ -2,6 +2,13 @@
 
 
 #footer {
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	color: #555555;
+	font-size:15px;
 }
 
 #header {
@@ -113,13 +120,3 @@
 	float:left;
 	width: 30%;
 }
-
-
-
-
-
-
-
-
-
-c

@@ -1,6 +1,6 @@
 Ext.define('Sensor.view.Main', {
 	extend: 'Ext.Container',
-	requires: [ 'Ext.Carousel', 'Sensor.store.SensorStore', 'Ext.Img'],
+	requires: [ 'Ext.Carousel','Ext.DataView', 'Sensor.store.SensorStore', 'Ext.Img', 'Sensor.store.TwitterStore'],
 
 	config: {
 		fullscreen: true,
@@ -140,17 +140,22 @@ Ext.define('Sensor.view.Main', {
         		},
         		// Laatste container met Twitter feed
         		{
-        				xtype: 'container',
-        				flex:3,
-        				styleHTMLContent: true,
-        				width: '100%',
-        				height: 30,
-						id: 'footer',
-        				items: [
-        					{
-        					html : 'Twitter',        					
-        					}
-        				]
+        			xtype: "dataview",
+        			store: "TwitterStore",
+					flex:3,
+        			styleHTMLContent: true,
+        			width: '100%',
+        			height: 60,
+					id: 'footer',
+        			items: [
+        				{
+        					items: [
+        						{
+        							itemTpl: '{text}'
+        						}]
+				
+        				}
+        			]
         		}
     	]    	
 	},
