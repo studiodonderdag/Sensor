@@ -65,7 +65,15 @@ Ext.define('Sensor.view.Main', {
         					{
         						xtype: 'label',
         						baseCls: 'menuItemLabel',
-        						html : 'Nieuws', 
+        						html : 'Nieuws',
+        						
+        						listeners: {
+        							element: 'element',
+        							tap: function() {
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.NewsList' });
+       								}
+        						},
         					},
         					{
         						xtype: 'image',
@@ -76,6 +84,7 @@ Ext.define('Sensor.view.Main', {
         						height: '100%',
                     			title: 'Sensor Nieuws',
     							description: 'Sensor Nieuws',
+    							
     							listeners: {
         							tap: function() {
     									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
@@ -90,7 +99,15 @@ Ext.define('Sensor.view.Main', {
         					{
         						xtype: 'label',
         						baseCls: 'menuItemLabel',
-        						html : "Foto's", 
+        						html : "Foto's",
+        						
+        						listeners: {
+        							element: 'element',
+        							tap: function() {
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.Photos' });
+       								}
+        						},
         					},
         					{
         						xtype: 'image',
@@ -116,7 +133,15 @@ Ext.define('Sensor.view.Main', {
         					{
         						xtype: 'label',
         						baseCls: 'menuItemLabel',
-        						html : "Contact", 
+        						html : "Contact",
+        						
+        						listeners: {
+        							element: 'element',
+        							tap: function() {
+    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    									Ext.Viewport.add({ xclass: 'Sensor.view.Contact' });
+       								}
+        						},
         					},
         					{
         						xtype: 'image',
@@ -132,10 +157,10 @@ Ext.define('Sensor.view.Main', {
         							tap: function() {
     									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
     									Ext.Viewport.add({ xclass: 'Sensor.view.Contact' });
-       								}
+       									}
         						}
         					}],
-        					},        					
+        				},        					
         			]	
         		},
         		// Laatste container met Twitter feed

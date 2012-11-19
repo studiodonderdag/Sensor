@@ -1,5 +1,5 @@
-Ext.define("Sensor.view.Photos", {
-    extend: 'Ext.Panel',
+Ext.define('Sensor.view.Photos', {
+    extend: 'Ext.Container',
 
     config: {
     	fullscreen: true,

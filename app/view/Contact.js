@@ -1,12 +1,12 @@
-Ext.define("Sensor.view.Contact", {
-    extend: 'Ext.Panel',
+Ext.define('Sensor.view.Contact', {
+    extend: 'Ext.Container',
 
     config: {
     	fullscreen: true,
     	
     	items: [
     			{
-    				html: 'Contact Info',
+    				html: '<p><h2>CONTACTGEGEVENS SENSOR</h2><br><strong>Bezoekadres</strong><br>Kapittelweg 33<br>Kamer A3.11<br><br><strong>Arnhem</strong><br>Ruitenberglaan 29<br>Kamer 3.19</p>',
         
     			},
     
