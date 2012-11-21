@@ -30,44 +30,6 @@ config : {
             },
         ]
 	}, // navigationbar
-
-	
-	
-    items: [
-        {
-        	xtype: 'container',
-        	flex:1,
-        	html: 'blaa',
-    		items: [
-        	{        	
-        	xtype: 'button',
-        	text: 'Push another view!',
-                listeners:{
-                    tap: function(list,index,item){
-                         var view = list.parent; //could use list.up('navigationview')
-                    	//  var view = list.up('navigationview');
-						console.log(view);
-                        if (index === 0) {
-                            view.push(
-                            	{ 
-                            		html:'detailView'
-                            	}                           
-                            );
-                        }
-                    }
-                }        	
-//        	handler: function() {
-//        		console.log('pushed');
-//        		//when someone taps this button, it will push another view into stack
-//                this.push(
-//                'blaah'
-//                //{html: 'Some new content'}
-//                );
-//              }
-        	}]
-
-        }
-    ]
     
 } //config    
 });

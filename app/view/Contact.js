@@ -1,4 +1,5 @@
 Ext.define('Sensor.view.Contact', {
+
  extend: 'Ext.Container', 
  xtype: 'contact',  // name reference
 	
@@ -16,6 +17,6 @@ Ext.define('Sensor.view.Contact', {
 	]
 
  }
-	
-	
+		
+
 });
