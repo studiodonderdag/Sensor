@@ -1,166 +1,115 @@
 Ext.define('Sensor.view.Main', {
-	extend: 'Ext.Container',
-	requires: [ 'Ext.Carousel','Ext.DataView', 'Sensor.store.SensorStore', 'Ext.Img', 'Sensor.store.TwitterStore'],
-
-	config: {
+ extend: 'Ext.Container',
+ stores : ['SensorStore'],
+	
+ config: {
+	style: 'background-image: url(./resources/images/bg_papier.jpg)',	
+	layout: {
+		type: 'vbox',
+		scrollable: true,
 		fullscreen: true,
-		maxWidth: 640,
-		layout: 'fit',
-		indicator: true,
-    	scrollable: {
-     		direction: 'vertical',
-      		directionLock: true
-    	},
-    	layout: {
-      		type: 'vbox',
-      		align: 'stretch'
-    	},		
-		style: 'background-image: url(./resources/images/bg_papier.jpg)',	
-		
-		// Eerste container voor het Sensor en HAN logo
-    	items: [
-        		{
-						xtype: 'container',
-						flex: 1,
-						styleHTMLContent: true,
-						width: '100%',
-        				height: 75,
-						id: 'header',
-        				items: [
-        					{
-        					xtype: 'image',
-        					styleHTMLContent: true,
-        					mode: 'image',
-        					//mode: 'element',
-        					src: './resources/images/logo_sensor.png',
-        					baseCls: 'sensorLogo',
-                    		title: 'Sensor Logo',
-    						description: 'Sensor logo',
-        					},
-        					{
-        					xtype: 'image',
-        					styleHTMLContent: true,
-        					mode: 'image',
-        					src: './resources/images/logo_han.png',
-        					baseCls: 'hanLogo',
-                    		title: 'HAN Logo',
-    						description: 'HAN logo',
-        					},
-        				]
-        		},
-        		// Eerste container met de Carousel
-        		{
-        				xtype: 'carousel',
-        				flex: 2,
-        				baseCls: 'carousel',		
-                        height: 275,
-                        width: '100%',
-                        direction: 'horizontal',
-                        directionLock: true,
-                        items: [
-                        	// Carousel item nieuws
-                        	{
-        					styleHTMLContent: true,
-        					items: [
-        					{
-        						xtype: 'label',
-        						baseCls: 'menuItemLabel',
-        						html : 'Nieuws', 
-        					},
-        					{
-        						xtype: 'image',
-        						mode: 'image',
-        						src: './resources/images/nieuws.jpg',
-        						baseCls: 'menuItemLogo',
-        						width: '100%',
-        						height: '100%',
-                    			title: 'Sensor Nieuws',
-    							description: 'Sensor Nieuws',
-    							listeners: {
-        							tap: function() {
-    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    									Ext.Viewport.add({ xclass: 'Sensor.view.NewsList' });
-       								}
-        						},
-        					}],
-                    		},
-							// Carousel item foto's           	
-	        				{	        					        				
-	        				items: [
-        					{
-        						xtype: 'label',
-        						baseCls: 'menuItemLabel',
-        						html : "Foto's", 
-        					},
-        					{
-        						xtype: 'image',
-        						mode: 'image',
-        						src: './resources/images/fotos.jpg',
-        						baseCls: 'menuItemLogo',
-        						width: '100%',
-        						height: '100%',
-                    			title: 'Sensor Fotos',
-    							description: 'Sensor Fotos',
-	        				        	    			
-	        	    			listeners: {
-        							tap: function() {
-    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    									Ext.Viewport.add({ xclass: 'Sensor.view.Photos' });
-       								}
-        						}
-        					}],
-        					},
-        					// Carousel item contact           	
-	        				{	        					        				
-	        				items: [
-        					{
-        						xtype: 'label',
-        						baseCls: 'menuItemLabel',
-        						html : "Contact", 
-        					},
-        					{
-        						xtype: 'image',
-        						mode: 'image',
-        						src: './resources/images/contact-header.jpg',
-        						baseCls: 'menuItemLogo',
-        						width: '100%',
-        						height: '100%',
-                    			title: 'Sensor Contact',
-    							description: 'Sensor Contact',
-	        				        	    			
-	        	    			listeners: {
-        							tap: function() {
-    									Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    									Ext.Viewport.add({ xclass: 'Sensor.view.Contact' });
-       								}
-        						}
-        					}],
-        					},        					
-        			]	
-        		},
-        		// Laatste container met Twitter feed
-        		{
-        			xtype: "dataview",
-        			store: "TwitterStore",
-					flex:3,
-        			styleHTMLContent: true,
-        			width: '100%',
-        			height: 60,
-					id: 'footer',
-        			items: [
-        				{
-        					items: [
-        						{
-        							itemTpl: '{text}'
-        						}]
-				
-        				}
-        			]
-        		}
-    	]    	
+		styleHtmlContent : true,
 	},
+		
+	items: [
+	{	// top container in vbox for logo
+		xtype: 'container',		
+		flex: 1,
+		id: 'header',
+		items: [
+			{
+				xtype: 'image',
+        		mode: 'image',
+        		src: './resources/images/logo_sensor.png',
+        		baseCls: 'sensorLogo',
+			},
+			{
+				xtype: 'image',
+				mode: 'image',
+				src: './resources/images/logo_han.png',
+				baseCls: 'hanLogo',
+			},
+        ]
+	},
+	{	// center container in vbox for carousel
+		xtype: 'carousel',
+		flex:3,
+		activeItem: 0,	// start at first item in carousel
+		indicator: true, // carousel navigation indicators 
+		defaults: {
+			styleHtmlContent : true,
+			// add label to every carousel item
+			xtype: 'label',
+        	baseCls: 'menuItemLabel',
+        	// add image to every carousel item
+        	xtype: 'image',
+        	mode: 'image',        		
+        	baseCls: 'menuItemLogo',
+        	width: '100%',
+        	height: '80%',
+        	listeners: {
+        		tap: function() {
+    				Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    				Ext.Viewport.add({ xclass: 'Sensor.view.' + this.id });
+       			},
+        	},
+		},
+		// carousel items
+	    items: [
+	    {
+				id : 'NewsList', // this needs to be the name of the view xtype
+				html : 'Nieuws',
+				src: './resources/images/nieuws.jpg',
 
+				// Deze load listener laadt het laatste plaatje uit de RSS SensorStore
+				// De default listeren wordt overschreven en dus wekt het tab event dan niet meer.
+				// Even uitzoeken hoe je een listener toevoegd.
+//				listeners : {
+//					load: function () {
+//						var store = Ext.data.StoreManager.lookup('SensorStore');						
+//						var image = store.first().data.articleRoot + '/more.jpg';
+//						console.log( image );
+//					},
+//				},			
+				
+
+	    },	
+    		{
+    			id : 'Photos',
+    			html: 'photos',
+    			src: './resources/images/fotos.jpg',
+    		},
+    		{
+    			id : 'Contact',
+    			html: 'contact',
+    			src: './resources/images/contact-header.jpg',
+    		}    	
+    	] // carousel items
+	},
+	{	// bottom container in vbox for lasttweet
+        xtype: "dataview",	
+        
+//[WARN][Ext.dataview.DataView] Attempting to create a DataView with a layout. DataViews do not have a layout configuration as their items are laid out automatically. 
+//
+//        layout : {
+//        	type: 'vbox',
+//        	align: 'center',
+//        	pack: 'center',
+//        },
+        
+		style: 'border: 1px solid red; display: block;' + 
+				'text-align: center; font-size: 12px; font-style:italic',
+        scrollable: false,
+        //centered: true,
+        //autoScroll: true,
+        store: "TwitterStore",
+        height: 80,
+        items: [ { itemTpl: '{text}' } ],
+    },
+	] 
 	    
+} // config
+
 });
 
 

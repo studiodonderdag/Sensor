@@ -1,9 +1,8 @@
 
 Ext.application({
     name: 'Sensor',
-
-//	controllers: ['Main'],    
-    views: ['Main', 'NewsList', 'Photos'],
+   
+    views: ['Main', 'NewsList', 'Photos', 'Contact' ],
 	stores: ['SensorStore', 'TwitterStore'],
 	models: ['SensorModel', 'TwitterModel'],	
     
