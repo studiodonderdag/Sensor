@@ -12,6 +12,7 @@
 	width: 100%;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
+    background-color:white;
 	background-repeat:no-repeat;
 	background-attachment:0% 50%;
 	background-position:center; 
@@ -44,11 +45,16 @@
 }
 
 /* detail card met volledige news item */
-#ext-viewport .detailCard {
+#detailCard {
 	background-color: #ffffff !important;
 }
 
-#ext-viewport .articleImage {
+#detailCard .articleTopImage {
+	width: 200px;
+}
+
+
+#detailCard .articleImage {
 	float:left;
 	width: 30%;
 }

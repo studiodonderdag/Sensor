@@ -48,10 +48,12 @@ Ext.define('Sensor.view.Main', {
         	width: '100%',
         	height: '80%',
         	listeners: {
-        		tap: function() {
-    				Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    				Ext.Viewport.add({ xclass: 'Sensor.view.' + this.id });
-       			},
+        		tap: {
+        			fn : function() {
+    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    				 Ext.Viewport.add({ xclass: 'Sensor.view.' + this.id });
+        			}
+       			},      			
         	},
 		},
 		// carousel items
@@ -60,17 +62,28 @@ Ext.define('Sensor.view.Main', {
 				id : 'NewsList', // this needs to be the name of the view xtype
 				html : 'Nieuws',
 				src: './resources/images/nieuws.jpg',
-
-				// Deze load listener laadt het laatste plaatje uit de RSS SensorStore
-				// De default listeren wordt overschreven en dus wekt het tab event dan niet meer.
-				// Even uitzoeken hoe je een listener toevoegd.
-//				listeners : {
-//					load: function () {
-//						var store = Ext.data.StoreManager.lookup('SensorStore');						
-//						var image = store.first().data.articleRoot + '/more.jpg';
+				
+				listeners : {				
+				 tap: {
+        			fn : function() {
+    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    				 Ext.Viewport.add({ xclass: 'Sensor.view.NewsList' });
+        			},
+        			element : 'element',
+					scope: this,
+       			 },	
+										
+				 load: { 
+					fn :function () {
+						var store = Ext.data.StoreManager.lookup('SensorStore');						
+						var image = store.first().data.articleRoot + '/more.jpg';		
 //						console.log( image );
-//					},
-//				},			
+					},
+					single: true,
+					element : 'element',
+					scope: 'NewsList',
+				 } 
+				},			
 				
 
 	    },	
