@@ -53,7 +53,8 @@
 #detailCard {
 /*	background-image: url(../images/bg_papier.jpg);*/
 	margin: 0 auto;
-	max-width: 470px;
+	max-width: 460px;
+	width: 100%;
 	background-color: #ffffff !important;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
@@ -63,7 +64,7 @@
 }
 
 #detailCard .articleTopImage {
-	width: 470px;
+	width: 100%;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
 }
@@ -78,7 +79,7 @@
 }
 
 #detailCard a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #detailCard a {

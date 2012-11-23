@@ -5,13 +5,17 @@ var getContent = function(view, index, item, e) {
 	 			// het eerste plaatje van een artikel heet altijd more.jpg
 	 			// deze staat in de root van de index.xml van het artikel 
 	  			var imageLink = articleRoot + "/more.jpg";
-	 			var imageLink = '<img src="' + imageLink + '" width=100% class="articleTopImage"</img>';
+	 			var imageLink = '<img src="' + imageLink + '" class="articleTopImage"</img>';
 	 			var content = rec.data.content;
 				// de images in het artikel gebruiken relatieve paden
 	 			// voor iedere img src moet het complete pad toegevoegd worden
 	 			content=content.replace(/src="/g, "class=\"articleImage\" src=\""+articleRoot+"/");
 	 			var content = imageLink + content;
-				Ext.ComponentManager.get('navigationviewid').push({ scrollable: 'vertical', id: 'detailCard' ,html: content })
+				Ext.ComponentManager.get('navigationviewid').push({ 
+					scrollable: 'vertical',
+					id: 'detailCard',
+					html: '<div background-color:"red">' + content + '</div>',
+				})
 };
 
 
