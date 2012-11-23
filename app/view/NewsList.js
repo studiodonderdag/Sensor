@@ -11,7 +11,7 @@ var getContent = function(view, index, item, e) {
 	 			// voor iedere img src moet het complete pad toegevoegd worden
 	 			content=content.replace(/src="/g, "class=\"articleImage\" src=\""+articleRoot+"/");
 	 			var content = imageLink + content;
-				Ext.ComponentManager.get('navigationviewid').push({ id: 'detailCard' ,html: content })
+				Ext.ComponentManager.get('navigationviewid').push({ scrollable: 'vertical', id: 'detailCard' ,html: content })
 };
 
 
@@ -25,9 +25,10 @@ Ext.define('Sensor.view.NewsList', {
 	styleHTMLContent: true,
 
     navigationBar: {
-	    docked: 'bottom',	    
+	    docked: 'bottom',
 	    ui: 'dark', // dark / active / light / neutral
 	    items : [ {
+	    	
 	    	align: 'right',
 	    	xtype: 'button',
 	    	iconMask: true,  
@@ -44,7 +45,7 @@ Ext.define('Sensor.view.NewsList', {
 	
 	layout: {
     	animation: { 
-    		type: 'slide',	// null, slide, fade, flip, cube, pop, wipe
+    		type: 'slide',	// null, slide, fade, flip, cube, pop
     		direction: 'left',
     		duration: 500
     	},
@@ -60,7 +61,6 @@ Ext.define('Sensor.view.NewsList', {
 		styleHtmlContent: true,
 		store: 'SensorStore',
 	    itemTpl: '<div class="NewsListItem"><div class="NewsListItemBackground" style="background-image:url(\'{articleRoot}/more.jpg\');"><div class="NewsListItemText">{title}</div></div></div>',
-	    
  		listeners: { 			
  			itemtap: getContent,			
 	 	}
