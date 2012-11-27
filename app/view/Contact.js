@@ -1,7 +1,5 @@
 Ext.define('Sensor.view.Contact', {
-
  extend: 'Ext.Container', 
- xtype: 'contact',  // name reference
 	
  config : {
  	fullscreen: true,

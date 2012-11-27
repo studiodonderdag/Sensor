@@ -1,4 +1,10 @@
 
+#mainmenu {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 460px;
+}
 
 #footer {
 	padding-left: 5%;
@@ -38,38 +44,37 @@
 }
 
 
-.carousel{
-	display:block;
-	width: 100%;
+#carousel {
+/*	background-color: yellow;*/
+	height: 100%;
 }
 
-
-.menuItemLogo {
-	display:block;
-	text-align: center;
+#carousel .wrapper {
+/*	background-color:red;*/
+	height:200px;
 }
 
-
-.menuItemLogo img {
+#carousel .menuItemBackground {
+	display:block;
+	text-Align:center;
+	height: 100%;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
-    width: 90%;
-    height: 100px;
-	max-width: 90%;
-	max-height: 90%;
+    background-color:white;
+	background-repeat:no-repeat;
+	background-attachment:0% 50%;
+	background-position:center; 
 }
 
-.menuItemLabel {
-	display:block;
-	width:100%;
-	position:absolute;
-	top:65%;
-	height:40px;
-	line-height: 40px;
-	/* background-color:white;
-	opacity: 0.2; */
+#carousel .menuItemLabel {
+	position:relative;
+	top:45%;
+	line-height: 2em;
 	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
-	text-align: center;
+	color: #555555;
+	font-size:15px;
 }
+
+
 
 

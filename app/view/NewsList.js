@@ -14,7 +14,27 @@ var getContent = function(view, index, item, e) {
 				Ext.ComponentManager.get('navigationviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
-					html: '<div background-color:"red">' + content + '</div>',
+					html: content + '<hr>' +
+					// facebook share
+					'<iframe src="http://www.facebook.com/plugins/like.php?href=' + rec.data.link + '&amp;' + 
+					'layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light" ' +
+					'scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; height:20px; width:85px;"></iframe>' 
+					
+// https://dev.twitter.com/docs/tweet-button
+					
+//'<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + rec.data.link + '" data-text="' + rec.data.title + '" data-via="snsr" data-lang="nl">Tweet</a>' +  
+//'<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0]; if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>'
+
+					
+					
+					
+//					// twitter share
+//					'<a href="http://twitter.com/share" class="twitter-share-button"' +
+//					'data-text="' + rec.data.title +'"' +
+//					'data-url="' + rec.data.link + '" data-count="horizontal"' + 
+//					'data-via="snsr">Tweet</a>' +
+//					'<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>'
+					
 				})
 };
 

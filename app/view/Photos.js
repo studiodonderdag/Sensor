@@ -1,6 +1,5 @@
 Ext.define('Sensor.view.Photos', {
  extend: 'Ext.navigation.View', 
- xtype: 'photos',  // name reference
 	
 config : {
 	styleHTMLContent: true,
