@@ -15,20 +15,31 @@ var getContent = function(view, index, item, e) {
 					scrollable: 'vertical',
 					id: 'detailCard',
 					html: content + '<hr>' +
+					
 					// facebook share
 					'<iframe src="http://www.facebook.com/plugins/like.php?href=' + rec.data.link + '&amp;' + 
 					'layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light" ' +
 					'scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; height:20px; width:85px;"></iframe>' 
+					
+					// twitter share
+					+ '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='+ rec.data.link +'; &text='+ rec.data.title +' '+ rec.data.link +'" style="width:115px; height:21px;"></iframe>'
+					
 					
 // https://dev.twitter.com/docs/tweet-button
 					
 //'<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + rec.data.link + '" data-text="' + rec.data.title + '" data-via="snsr" data-lang="nl">Tweet</a>' +  
 //'<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0]; if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>'
 
+					//+ '<a href="https://twitter.com/intent/tweet?text='+ rec.data.title + ' ' + rec.data.link +'&amp;tw_p=tweetbutton&amp;" class="btn" id="b" target="_blank"><i></i><span class="label" id="l">Tweeten</a>'
+					
+					//facebook
+					//'<div id="facebook-button">data-href="http://www.facebook.com" data-send="false" data-width="450" data-show-faces="false"></a></div>' +
+					//'<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/nl_NL/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>'		
 					
 					
-					
-//					// twitter share
+					//+ '<div id="tweet-button"><a href="https://twitter.com/share?url='+ rec.data.link +'" target="_blank">Tweet</a></div>'
+        			
+					// twitter share
 //					'<a href="http://twitter.com/share" class="twitter-share-button"' +
 //					'data-text="' + rec.data.title +'"' +
 //					'data-url="' + rec.data.link + '" data-count="horizontal"' + 
