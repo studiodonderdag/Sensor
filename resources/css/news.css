@@ -53,6 +53,7 @@
 #detailCard {
 /*	background-image: url(../images/bg_papier.jpg);*/
 	margin: 0 auto;
+	padding: 5px;
 	max-width: 460px;
 	width: 100%;
 	background-color: #ffffff !important;

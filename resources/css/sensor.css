@@ -75,6 +75,18 @@
 	font-size:15px;
 }
 
-
-
-
+#tweet-button a {
+    display: block;
+    padding: 2px 5px 54px 52px;
+    background: url('../images/button_twitter.png') 1px center no-repeat;
+    border: none;
+    float: left;
+  }
+  
+#facebook-button a {
+    display: block;
+    padding: 2px 5px 54px 52px;
+    background: url('../images/button_facebook.png') 1px center no-repeat;
+    border: none;
+    float: left;
+  }
