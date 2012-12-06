@@ -90,3 +90,11 @@
     border: none;
     float: left;
   }
+
+#mail-button a {
+    display: block;
+    padding: 2px 5px 54px 52px;
+    background: url('../images/button_mail.png') 1px center no-repeat;
+    border: none;
+    float: left;
+  }

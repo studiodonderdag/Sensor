@@ -30,6 +30,8 @@ var getContent = function(view, index, item, e) {
 					// twitter share met een div en een plaatje (css)
 					+ '<div id="tweet-button"><a href="https://twitter.com/intent/tweet?text='+ rec.data.title + ' - ' + rec.data.link +'" target="_blank"></a></div>'
 					
+					// Mail share met een div en een plaatje (css)
+					+ '<div id="mail-button"><a rel="nofollow" href="mailto:?body=' + rec.data.link +' &subject='+ rec.data.title + '"></a>'
 					
 				})
 };
