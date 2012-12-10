@@ -14,7 +14,7 @@ var getContent = function(view, index, item, e) {
 				Ext.ComponentManager.get('navigationviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
-					html: content + '<hr>' +
+					html: content + '<hr class="newshr">' +
 					
 					// facebook share iframe (werkend)
 					//'<iframe src="http://www.facebook.com/plugins/like.php?href=' + rec.data.link + '&amp;' + 

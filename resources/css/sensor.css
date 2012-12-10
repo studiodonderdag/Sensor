@@ -45,30 +45,26 @@
 
 
 #carousel {
-/*	background-color: yellow;*/
-	height: 100%;
+	margin: 0 5%;
 }
 
-#carousel .wrapper {
-/*	background-color:red;*/
-	height:200px;
-}
 
 #carousel .menuItemBackground {
-	display:block;
-	text-Align:center;
-	height: 100%;
+	background-color: white;
+	height: 90%;	
+	max-height: 370px;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
-    background-color:white;
 	background-repeat:no-repeat;
 	background-attachment:0% 50%;
 	background-position:center; 
 }
 
 #carousel .menuItemLabel {
-	position:relative;
-	top:45%;
+	width:100%;
+	position: absolute;
+	top: 45%;
+	text-Align:center;
 	line-height: 2em;
 	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
 	color: #555555;
