@@ -25,7 +25,43 @@ Ext.define('Sensor.view.Main', {
 		flex:1,
 		activeItem: 0,	// start at first item in carousel
 		indicator: true, // carousel navigation indicators
+		// listener voor carousel
+		listeners : {
+		 initialize: {
+		 	fn: function() {
+//		 		SensorStore.getStore().getAt(0)
+//		 	Ext.getStore('SensorStore').load(function(blaah) {
+//		 		console.log( blaah ); 
+//		 		Ext.each(blaah, function(image) {
+//		 			console.log (image.get('articleRoot') );
+//		 		})
+//		 	});
+		 		
+//						var store = Ext.data.StoreManager.lookup('SensorStore');
 
+//						var image = store.first().data.articleRoot + '/more.jpg';
+						
+//						Ext.getCmp('NewsList').setStyle('background-image', './resources/images/fotos.jpg');
+//						console.log(Ext.getCmp('NewsList').getStyle('background-image') );
+						
+//						console.log( store.getId() );
+//						console.log( store.data.all[0] );
+		 	} // function
+		 } // initialize
+		}, // listeners
+		// default listeners voor alle carousel items		
+		defaults: {
+			listeners : {
+				 tap: {
+        			fn : function() {
+    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
+    				 Ext.Viewport.add({ xclass: 'Sensor.view.' + this.id });
+        			},
+        			element : 'element',
+       			 }	      			 
+			} // listener						
+		},
+		
 		// carousel items
 	    items: [
 	    {
@@ -33,67 +69,29 @@ Ext.define('Sensor.view.Main', {
 				cls: 'menuItemBackground',
     			style: 'background-image:url("./resources/images/nieuws.jpg");',
     			html: '<div class="menuItemLabel">Nieuws</div>',
-				listeners : {				
-				 tap: {
-        			fn : function() {
-    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    				 Ext.Viewport.add({ xclass: 'Sensor.view.NewsList' });
-        			},
-        			element : 'element',
-					scope: this,
-       			 },	      			 
-				}, // listener			
 	    }, // newslist item	
     	{
     			id : 'Photos',
     			cls: 'menuItemBackground',
     			style: 'background-image:url("./resources/images/fotos.jpg");',
     			html: '<div class="menuItemLabel">Foto\'s</div>',
-				listeners : {				
-				 tap: {
-        			fn : function() {
-    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    				 Ext.Viewport.add({ xclass: 'Sensor.view.Photos' });
-        			},
-        			element : 'element',
-					scope: this,
-       			 }
-				}
     	},
     	{
     			id : 'Contact',
     			cls: 'menuItemBackground',
     			style: 'background-image:url("./resources/images/contact-header.jpg");',
     			html: '<div class="menuItemLabel">Contact</div>',
-				listeners : {				
-				 tap: {
-        			fn : function() {
-    				 Ext.Viewport.remove(Ext.Viewport.getActiveItem(), true);
-    				 Ext.Viewport.add({ xclass: 'Sensor.view.Contact' });
-        			},
-        			element : 'element',
-					scope: this,
-       			 }
-				}
-
     	}    	
     	] // carousel items
 	},
 	{	// bottom container in vbox for lasttweet
         xtype: "dataview",	
-//[WARN][Ext.dataview.DataView] Attempting to create a DataView with a layout. DataViews do not have a layout configuration as their items are laid out automatically. 
-//
-//        layout : {
-//        	type: 'vbox',
-//        	align: 'center',
-//        	pack: 'center',
-//        },
 		style: 'border: none; display: block;' + 
 				'text-align: center; font-size: 12px; font-style:italic',
         scrollable: false,
         store: "TwitterStore",
         height: 40,
-        items: [ { itemTpl: '{text}' } ],
+        itemTpl: '{htmlText}',
     },
 	] 
 } // config
