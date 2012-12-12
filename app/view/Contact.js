@@ -22,36 +22,37 @@ Ext.define('Sensor.view.Contact', {
          },
          {
         	 xtype: 'panel',
+        	 id: 'mainmenu',
         	 flex:1,
+        	 scrollable: true,
              items: [
                   {                     
-                     html:	'<img src="./resources/images/contact-header.jpg" alt="Contact" height="auto" width="100%">' +	
+                     html:	'<div id="contact-info-img"><img src="./resources/images/contact-header.jpg" alt="Contact" ></div>' +	
+            
+                    	 	'<div id="contact-info-header"><p>Contactgegevens</p></div>' +
                     	 	
-                    	 	'<div id="contact-info-header"><p><h2>Contactgegvens</h2></p></div>' +
-                    	 	
-                    	 	'<br>' +
                     	 	
                     	 	'<div id="contact-info-left"><p>Nijmegen<br>Kapittelweg 33<br>Kamer A3.11<br><br>Postbus 6960<br>6503 GL Nijmegen<br>T. (024) 353 03 90<br>E. sensor@han.nl</p></div>' +
                     	 	
                     	 	'<div id="contact-info-right"><p>Arnhem<br>Ruitenberglaan 29<br>Kamer 3.19<br><br>Adverteren ?<br>Bureau Nassau<br>T. (020) 623 09 05<br>bureaunassau.nl</p></div>' +
  			
-                     // facebook share
-                     '<div id="contact-social"><iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/SNSR.HAN&amp;' + 
-                     'layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light" ' +
-                     'scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; height:20px; width:85px;"></iframe>' 
+                     		// facebook share
+                     		'<div id="contact-social"><iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/SNSR.HAN&amp;' + 
+                     		'layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light" ' +
+                     		'scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; height:20px; width:85px;"></iframe>' +
 					
-                     // twitter share
-                     + '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-                     'src="//platform.twitter.com/widgets/follow_button.html?screen_name=Snsr"' +
-                     'style="width:300px; height:20px;"></iframe></div>',
+                     		// twitter share
+                     		'<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
+                     		'src="//platform.twitter.com/widgets/follow_button.html?screen_name=Snsr"' +
+                     		'style="width:300px; height:20px;"></iframe></div>',
                   }
               ]
          },
          
          {
              docked: 'bottom',
-             
              xtype: 'titlebar',
+             ui: 'dark',
              items: [
                   {
                 	  align: 'right',

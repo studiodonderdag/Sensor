@@ -100,22 +100,43 @@
 	display: block;
 	float: clearleft;
 	margin: 2px 2px 2px 2px;
+	font-size: 22px;
+	color: #036;
 }
   
 #contact-info-left p {
 	display: block;
 	float: left;
-	margin: 2px 50px 5px 5px;
+	margin: 2px 40px 5px 5px;
+	font-size: 15px;
+	color: #036;
 }
 
 #contact-info-right p {
 	display: block;
 	float: clear;
+	font-size: 15px;
+	color: #036;
+}
+
+#contact-info-img img {
+	background-size:cover;
+	background-color: white;
+	height: 30%;
+	width: 90%;
+	align: center;
+	max-height: 370px;
+	-webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
+	background-repeat:no-repeat;
+	background-attachment:0% 50%;
+	background-position:center;
+	margin: 5px;
 }
 
 #contact-social {
 	display: block;
 	float: left;
-	margin: 5px;
-	padding: 5px;
+	margin: 2px;
+	padding: 2px;
 }
