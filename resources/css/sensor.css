@@ -95,3 +95,27 @@
     border: none;
     float: left;
   }
+
+#contact-info-header p {
+	display: block;
+	float: clearleft;
+	margin: 2px 2px 2px 2px;
+}
+  
+#contact-info-left p {
+	display: block;
+	float: left;
+	margin: 2px 50px 5px 5px;
+}
+
+#contact-info-right p {
+	display: block;
+	float: clear;
+}
+
+#contact-social {
+	display: block;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+}

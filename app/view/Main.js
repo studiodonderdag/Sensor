@@ -23,7 +23,7 @@ Ext.define('Sensor.view.Main', {
 		xtype: 'carousel',
 		id: 'carousel',
 		flex:1,
-		activeItem: 1,	// start at first item in carousel
+		activeItem: 0,	// start at first item in carousel
 		indicator: true, // carousel navigation indicators
 		// listener voor carousel
 		listeners : {
