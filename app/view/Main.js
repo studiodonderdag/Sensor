@@ -12,7 +12,7 @@ Ext.define('Sensor.view.Main', {
 	},		
 	items: [
 	{	// top container in vbox for logo		
-		height: 60,
+		height: 80,
 		id: 'header',
 		items: [
 			{   xtype: 'image', mode: 'image', src: './resources/images/logo_sensor.png', baseCls: 'sensorLogo', },
@@ -23,7 +23,7 @@ Ext.define('Sensor.view.Main', {
 		xtype: 'carousel',
 		id: 'carousel',
 		flex:1,
-		activeItem: 0,	// start at first item in carousel
+		activeItem: 1,	// start at first item in carousel
 		indicator: true, // carousel navigation indicators
 		// listener voor carousel
 		listeners : {

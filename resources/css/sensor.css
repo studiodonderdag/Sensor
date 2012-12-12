@@ -50,8 +50,9 @@
 
 
 #carousel .menuItemBackground {
+	background-size:cover;
 	background-color: white;
-	height: 90%;	
+	height: 90%;
 	max-height: 370px;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;

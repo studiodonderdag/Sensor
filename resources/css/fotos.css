@@ -1,0 +1,58 @@
+
+#FotoLijst {
+	background-image: url(../images/bg_papier.jpg);
+}
+
+.FotoListItem {
+	height: 100px;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 460px;
+}
+
+
+.FotoListItemBackground {
+	width:40%;
+	height:100%;
+	max-width: 100px;
+	
+	float:left;
+	-webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
+    background-repeat:no-repeat;
+	background-attachment:0% 50%;
+	background-position:center; 
+	background-size:cover;
+}
+
+.spacer {
+	height: 100%;
+	float:left;
+	width:1%;
+}
+
+.FotoListItemText {
+	width:59%;
+	height:100%;
+	-webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
+	float:left;
+	background-color: white;
+	text-align: center;
+	color: #555555;
+	font-size:10px;
+	overflow:hidden;
+}
+
+
+
+/* remove default grey line in listitems */
+.x-list-normal .x-list-item .x-list-item-label {
+	border-top: none;
+}
+
+.x-layout-card-container {
+	background-image: url(../images/bg_papier.jpg);
+	background-color: #ffffff !important;
+}
+
