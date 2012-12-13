@@ -18,8 +18,8 @@ Ext.application({
     
     fullscreen: true,
     views: ['Main', 'NewsList', 'Photos', 'Contact' ],
-	stores: ['SensorStore', 'TwitterStore'],
-	models: ['SensorModel', 'TwitterModel'],	
+	stores: ['SensorNewsStore', 'SensorPhotoStore', 'TwitterStore'],
+	models: ['SensorNewsModel', 'SensorPhotoModel', 'TwitterModel'],	
     
     launch: function() { 
     	Ext.Viewport.add({

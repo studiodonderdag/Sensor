@@ -9,7 +9,8 @@ Ext.define('Sensor.view.Contact', {
 				scrollable: true,
 				fullscreen: true,
 				styleHtmlContent : true,
-			},		
+			},
+			
    
     items: [
          {

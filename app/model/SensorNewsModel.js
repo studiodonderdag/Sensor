@@ -1,4 +1,4 @@
-Ext.define("Sensor.model.SensorModel", {
+Ext.define("Sensor.model.SensorNewsModel", {
  extend: "Ext.data.Model",
  config: {
 	fields: [

@@ -14,8 +14,7 @@
 .FotoListItemBackground {
 	width:40%;
 	height:100%;
-	max-width: 100px;
-	
+	max-width: 100px;	
 	float:left;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
@@ -32,7 +31,7 @@
 }
 
 .FotoListItemText {
-	width:59%;
+	width:77%;
 	height:100%;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;

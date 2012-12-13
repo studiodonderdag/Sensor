@@ -10,7 +10,8 @@ var getContent = function(view, index, item, e) {
 				// de images in het artikel gebruiken relatieve paden
 	 			// voor iedere img src moet het complete pad toegevoegd worden
 	 			content=content.replace(/src="/g, "class=\"articleImage\" src=\""+articleRoot+"/");
-	 			var content = imageLink + content;
+	 			var title = '<div class="articleTitle">' + rec.data.title + '</div>';	 			
+	 			var content = imageLink + title + content;
 				Ext.ComponentManager.get('navigationviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
@@ -39,7 +40,7 @@ var getContent = function(view, index, item, e) {
 
 Ext.define('Sensor.view.NewsList', {
  extend: 'Ext.navigation.View',
- requires: ["Ext.List", "Sensor.store.SensorStore"],
+ requires: ["Ext.List", "Sensor.store.SensorNewsStore"],
  fullscreen: true,
  id: 'navigationviewid',
  flex:1,
@@ -81,7 +82,7 @@ Ext.define('Sensor.view.NewsList', {
 		id : 'nieuwsLijst',
 		flex:1,
 		styleHtmlContent: true,
-		store: 'SensorStore',
+		store: 'SensorNewsStore',
 	    itemTpl: '<div class="NewsListItem"><div class="NewsListItemBackground" style="background-image:url(\'{articleRoot}/more.jpg\');"><div class="NewsListItemText">{title}</div></div></div>',
  		listeners: { 			
  			itemtap: getContent,			

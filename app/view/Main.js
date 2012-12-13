@@ -29,23 +29,14 @@ Ext.define('Sensor.view.Main', {
 		listeners : {
 		 initialize: {
 		 	fn: function() {
-//		 		SensorStore.getStore().getAt(0)
-//		 	Ext.getStore('SensorStore').load(function(blaah) {
-//		 		console.log( blaah ); 
-//		 		Ext.each(blaah, function(image) {
-//		 			console.log (image.get('articleRoot') );
-//		 		})
-//		 	});
-		 		
-//						var store = Ext.data.StoreManager.lookup('SensorStore');
 
-//						var image = store.first().data.articleRoot + '/more.jpg';
-						
-//						Ext.getCmp('NewsList').setStyle('background-image', './resources/images/fotos.jpg');
-//						console.log(Ext.getCmp('NewsList').getStyle('background-image') );
-						
-//						console.log( store.getId() );
-//						console.log( store.data.all[0] );
+		 	Ext.getStore('SensorNewsStore').load(function(articles) {	
+		 		 var lastArticleImage = articles[0].data.articleRoot + '/more.jpg';
+				 Ext.getCmp('NewsList').setStyle( { background : 'url('+ lastArticleImage  +')' } );		 		
+				 Ext.getCmp('NewsList').addCls( 'menuItemBackground'  );
+//				 console.log(Ext.getCmp('NewsList').getStyle('background-image') );
+		 		});
+		 		
 		 	} // function
 		 } // initialize
 		}, // listeners
