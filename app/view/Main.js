@@ -29,12 +29,15 @@ Ext.define('Sensor.view.Main', {
 		listeners : {
 		 initialize: {
 		 	fn: function() {
-
+			// Set NewsList background Image
 		 	Ext.getStore('SensorNewsStore').load(function(articles) {	
 		 		 var lastArticleImage = articles[0].data.articleRoot + '/more.jpg';
-				 Ext.getCmp('NewsList').setStyle( { background : 'url('+ lastArticleImage  +')' } );		 		
-				 Ext.getCmp('NewsList').addCls( 'menuItemBackground'  );
-//				 console.log(Ext.getCmp('NewsList').getStyle('background-image') );
+				 Ext.getCmp('NewsList').setStyle( { backgroundImage : 'url('+ lastArticleImage  +')' } );		 		
+		 		});		 		
+			// Set Photos background Image
+		 	Ext.getStore('SensorPhotoStore').load(function(albums) {	
+		 		 var lastArticleImage = albums[0].data.articleImage;
+				 Ext.getCmp('Photos').setStyle( { backgroundImage : 'url('+ lastArticleImage  +')' } );		 		
 		 		});
 		 		
 		 	} // function
@@ -58,13 +61,13 @@ Ext.define('Sensor.view.Main', {
 	    {
 				id : 'NewsList', // this needs to be the name of the view xtype	
 				cls: 'menuItemBackground',
-    			style: 'background-image:url("./resources/images/nieuws.jpg");',
+//    			style: 'background-image:url("./resources/images/nieuws.jpg");',
     			html: '<div class="menuItemLabel">Nieuws</div>',
 	    }, // newslist item	
     	{
     			id : 'Photos',
     			cls: 'menuItemBackground',
-    			style: 'background-image:url("./resources/images/fotos.jpg");',
+//    			style: 'background-image:url("./resources/images/fotos.jpg");',
     			html: '<div class="menuItemLabel">Foto\'s</div>',
     	},
     	{
