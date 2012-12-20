@@ -23,7 +23,7 @@ Ext.define('Sensor.view.Main', {
 		xtype: 'carousel',
 		id: 'carousel',
 		flex:1,
-		activeItem: 0,	// start at first item in carousel
+		activeItem: 1,	// start at first item in carousel
 		indicator: true, // carousel navigation indicators
 		// listener voor carousel
 		listeners : {
@@ -79,12 +79,15 @@ Ext.define('Sensor.view.Main', {
     	] // carousel items
 	},
 	{	// bottom container in vbox for lasttweet
-        xtype: "dataview",	
+      xtype: "dataview",
+//      disableSelection: true,
+      
 		style: 'border: none; display: block;' + 
 				'text-align: center; font-size: 12px; font-style:italic',
-        scrollable: false,
+        scrollable: false,        
         store: "TwitterStore",
-        height: 40,
+        height: 40,                
+//        itemTpl: '{htmlText}',
         itemTpl: '{htmlText}',
     },
 	] 

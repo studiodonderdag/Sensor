@@ -1,6 +1,6 @@
 
 #FotoLijst {
-	background-image: url(../images/bg_papier.jpg);
+	background-image: inherit;
 }
 
 .FotoListItem {
@@ -45,13 +45,5 @@
 
 
 
-/* remove default grey line in listitems */
-.x-list-normal .x-list-item .x-list-item-label {
-	border-top: none;
-}
 
-.x-layout-card-container {
-	background-image: url(../images/bg_papier.jpg);
-	background-color: #ffffff !important;
-}
 

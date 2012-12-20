@@ -1,3 +1,7 @@
+
+
+
+
 var getContent = function(view, index, item, e) {
  				var rec = view.getStore().getAt(index);
 	 			var iframeLink = rec.data.link;	 			
@@ -5,8 +9,16 @@ var getContent = function(view, index, item, e) {
 				Ext.ComponentManager.get('photoviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
-					html: '<iframe style="width:100%; height:100%;" src=' + iframeLink + '></iframe>',					
-				})
+					html: '<iframe id="photoiframe" style="width:100%; height:100%; visibility:show;" src=' + iframeLink + '></iframe>',
+					listeners: {
+						initialize: function getImg() {
+							console.log(iframeLink);
+						}
+					},
+					
+				});
+				
+				
 };
 
 

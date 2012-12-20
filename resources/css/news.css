@@ -24,14 +24,15 @@
 	position:relative;
 	top:40%;
 	line-height: 2em;
-	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
+	background-color: rgba(255, 255, 255, 0.8 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
 	text-align: center;
 	color: #555555;
 	font-size:15px;
+	font-weight:bold;
 }
 
 #nieuwsLijst {
-	background-image: url(../images/bg_papier.jpg);
+	background-image: inherit;
 }
 
 #nieuwstoolbar {
@@ -39,19 +40,9 @@
 }
 
 
-/* remove default grey line in listitems */
-.x-list-normal .x-list-item .x-list-item-label {
-	border-top: none;
-}
-
-.x-layout-card-container {
-	background-image: url(../images/bg_papier.jpg);
-	background-color: #ffffff !important;
-}
-
 /* detail card met volledige news item */
 #detailCard {
-	background-image: url(../images/bg_papier.jpg);
+	background-image: inherit;
 	margin: 0 auto;
 	padding: 5px;
 	max-width: 460px;

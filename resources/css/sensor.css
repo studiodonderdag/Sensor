@@ -1,4 +1,20 @@
 
+
+.x-layout-card-container {
+	background-image: url(../images/bg_papier.jpg);
+	background-color: #ffffff !important;
+}
+
+/* remove default grey line in listitems */
+.x-list-normal .x-list-item .x-list-item-label {
+	border-top: none;
+}
+
+html, body {
+  font-family: "Lucida Sans" ,"Lucida Grande";
+}
+
+
 #mainmenu {
 	height: 100%;
 	width: 100%;
@@ -67,9 +83,10 @@
 	top: 45%;
 	text-Align:center;
 	line-height: 2em;
-	background-color: rgba(255, 255, 255, 0.6 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
+	background-color: rgba(255, 255, 255, 0.8 );  /* FF3+, Saf3+, Opera 10.10+, Chrome */
 	color: #555555;
 	font-size:15px;
+	font-weight:bold;
 }
 
 #tweet-button a {
