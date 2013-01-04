@@ -1,11 +1,50 @@
 
+#contactheader {
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	max-width: 460px;
+	margin: auto;
+}
+
+#contactheader .sensorLogo {
+	float:left;
+    width: 40%;
+}
+
+#contactheader .sensorLogo img {
+	background-size: contain;
+    width: 100%;
+}
+
+
+#contactheader .hanLogo {
+	float:right;
+	width: 15%;	
+}
+
+#contactheader .hanLogo img {
+   width: 100%;
+}
+
 #contactmenu {
 	height: 100%;
 	width: 100%;
 	margin: 0 auto;
-	max-width: 460px;
 }
 
+#contactcontent {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 430px;	
+}
+
+#contactfooter {
+	
+	max-width: 100%;
+}
 
 #contact-info-header p {
 	display: block;
@@ -18,8 +57,14 @@
 #contact-info-left p {
 	display: block;
 	float: left;
-	margin: 2px 40px 5px 5px;
+	margin: 2px 4% 5px 5px;
 	font-size: 15px;
+	color: #036;
+}
+
+#contact-info-left a {
+	font-size: 15px;
+	text-decoration: none;
 	color: #036;
 }
 
@@ -27,6 +72,12 @@
 	display: block;
 	float: clear;
 	font-size: 15px;
+	color: #036;
+}
+
+#contact-info-right a {
+	font-size: 15px;
+	text-decoration: none;
 	color: #036;
 }
 
