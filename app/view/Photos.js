@@ -9,8 +9,8 @@ var getContent = function(view, index, item, e) {
 				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
 				
 				// define a model for the on the fly loaded feed	 			
-	 			Ext.define("photoFeedModel", {
-	 			 extend: "Ext.data.Model",
+	 			Ext.define('photoFeedModel', {
+	 			 extend: 'Ext.data.Model',
 	 			 fields: [
 	 				{
 	 				 name: 'contentSnippet',  type: 'string',
@@ -20,39 +20,41 @@ var getContent = function(view, index, item, e) {
 	 			 ]
 	 			});
 	 			// create a store to use the google feed reader to get the album rss data
-				
-				
-//	 			Ext.define("Sensor.store.SensorNewsStore", {
+								
+//	 			Ext.define("Sensor.store.photoFeedStore", {
 //					extend: 'Ext.data.Store',
-//				requires: ["Ext.data.proxy.JsonP", "photoFeedModel"  ],
+//				requires: ["photoFeedModel"],
 //	 			config: {
 //				    model: 'photoFeedModel',
 //				    autoLoad: true,
 //				    
 //				    proxy: {
 //				        type: 'jsonp',
-//				        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=5&q=' + photoAlbumRSS,
+//				        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&q=' + photoAlbumRSS,
 //				        reader: {
 //				            type: 'json',
 //				            rootProperty: 'responseData.feed.entries'
 //				            }
 //				        },        
-//				    }   
+//				    },
 //				});
 				
 				var photoFeedStore = new Ext.data.Store({
+//				Ext.create('Ext.data.Store', {
 					model: 'photoFeedModel',
+					storeId: 'photoFeedStore',
 					proxy: {
 						type: 'jsonp',
-						url :'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=5&q=' + photoAlbumRSS,
+						// the num number should be the same as the amount of images in the album
+						url :'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&q=' + photoAlbumRSS,
 						reader: {
 			            	type: 'json',
 			            	rootProperty: 'responseData.feed.entries'
 			            }
 			        },    
-//					listeners: {
-//						load: function(photoFeed, r){console.log(r)}
-//					}
+					listeners: {
+						load: function(photoFeedStore, r){console.log(r)}
+					}
 				});
 				// the actual load of the store
 				photoFeedStore.load();
@@ -64,9 +66,9 @@ var getContent = function(view, index, item, e) {
 					id: 'detailCard',
 					xtype: 'list',
 					styleHtmlContent: true,
-					store: 'SensorNewsStore',
-//					store: 'photoFeedStore',
-					itemTpl: '{title}',
+//					store: 'SensorNewsStore',
+					store: photoFeedStore,
+					itemTpl: 'imageLink: {content}',
 					listeners: {
 						initialize: function testFunction() {
 							console.log( photoAlbumURL );
