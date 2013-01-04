@@ -80,12 +80,17 @@ var getContent = function(view, index, item, e) {
 					layout: 'hbox',
 					// dit moeten alle thumbnails worden uit de store (de images toevoegen aan id photoContainer)
 					// het toevoegen moet gebeuren uit de store in het initialize script.
+					defaults: {
+						type: 'container',
+						width: 400,   // this is the image container width, container will scroll/bounce back if the with is smaller then the content
+					},
+					
 					items: [
-						{ type: 'container', width: 100, html: 'photo1'},
-						{ type: 'container', width: 100, html: 'photo2'},
-						{ type: 'container', width: 100, html: 'photo3'},
-						{ type: 'container', width: 100, html: 'photo4'},
-						{ type: 'container', width: 100, html: 'photo5'},
+						{ html: 'photo1'},
+						{ html: 'photo2'},
+						{ html: 'photo3'},
+						{ html: 'photo4'},
+						{ html: 'photo5'},
 					],
 					// laden van de photoFeedStore images
 					listeners: {
@@ -103,7 +108,6 @@ var getContent = function(view, index, item, e) {
 							
 							 
 							 Ext.ComponentManager.get('photoContainer').add({
-							 	xtype: 'container',
 							 	html: '<img src='+thumbnail+'></img>',
 							 });
 							 
