@@ -4,6 +4,7 @@
 }
 
 .FotoListItem {
+	border:1px solid green;
 	height: 100px;
 	width: 100%;
 	margin: 0 auto;
@@ -12,7 +13,8 @@
 
 
 .FotoListItemBackground {
-	width:40%;
+	border:1px solid yellow;
+	width:29%;
 	height:100%;
 	max-width: 100px;	
 	float:left;
@@ -25,17 +27,19 @@
 }
 
 .spacer {
+	border:1px solid red;
 	height: 100%;
 	float:left;
 	width:1%;
 }
 
 .FotoListItemText {
-	width:77%;
+	border:1px solid black;
+	width:70%;
 	height:100%;
+	float:right;
 	-webkit-border-radius: 0.4em !important;
     border-radius: 0.4em !important;
-	float:left;
 	background-color: white;
 	text-align: center;
 	color: #555555;

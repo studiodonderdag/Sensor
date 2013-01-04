@@ -1,18 +1,75 @@
 
 
 
-
 var getContent = function(view, index, item, e) {
+				// get the clicked record link
  				var rec = view.getStore().getAt(index);
-	 			var iframeLink = rec.data.link;	 			
-
+	 			var photoAlbumURL = rec.data.link;
+	 			// add the feed link to the sensor php xml->rss converter
+				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
+				
+				// define a model for the on the fly loaded feed	 			
+	 			Ext.define("photoFeedModel", {
+	 			 extend: "Ext.data.Model",
+	 			 fields: [
+	 				{
+	 				 name: 'contentSnippet',  type: 'string',
+	 				 name: 'content',  type: 'string',
+	 				 name: 'link',  type: 'string'
+	 				}
+	 			 ]
+	 			});
+	 			// create a store to use the google feed reader to get the album rss data
+				
+				
+//	 			Ext.define("Sensor.store.SensorNewsStore", {
+//					extend: 'Ext.data.Store',
+//				requires: ["Ext.data.proxy.JsonP", "photoFeedModel"  ],
+//	 			config: {
+//				    model: 'photoFeedModel',
+//				    autoLoad: true,
+//				    
+//				    proxy: {
+//				        type: 'jsonp',
+//				        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=5&q=' + photoAlbumRSS,
+//				        reader: {
+//				            type: 'json',
+//				            rootProperty: 'responseData.feed.entries'
+//				            }
+//				        },        
+//				    }   
+//				});
+				
+				var photoFeedStore = new Ext.data.Store({
+					model: 'photoFeedModel',
+					proxy: {
+						type: 'jsonp',
+						url :'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=5&q=' + photoAlbumRSS,
+						reader: {
+			            	type: 'json',
+			            	rootProperty: 'responseData.feed.entries'
+			            }
+			        },    
+//					listeners: {
+//						load: function(photoFeed, r){console.log(r)}
+//					}
+				});
+				// the actual load of the store
+				photoFeedStore.load();
+				
+				
+//	 						
 				Ext.ComponentManager.get('photoviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
-					html: '<iframe id="photoiframe" style="width:100%; height:100%; visibility:show;" src=' + iframeLink + '></iframe>',
+					xtype: 'list',
+					styleHtmlContent: true,
+					store: 'SensorNewsStore',
+//					store: 'photoFeedStore',
+					itemTpl: '{title}',
 					listeners: {
-						initialize: function getImg() {
-							console.log(iframeLink);
+						initialize: function testFunction() {
+							console.log( photoAlbumURL );
 						}
 					},
 					

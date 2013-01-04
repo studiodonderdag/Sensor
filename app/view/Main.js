@@ -1,6 +1,5 @@
 Ext.define('Sensor.view.Main', {
  extend: 'Ext.Container',
- stores : ['SensorStore'],	
  config: {
 	style: 'background-image: url(./resources/images/bg_papier.jpg)',
 	id: 'mainmenu',
@@ -87,7 +86,6 @@ Ext.define('Sensor.view.Main', {
         scrollable: false,        
         store: "TwitterStore",
         height: 40,                
-//        itemTpl: '{htmlText}',
         itemTpl: '{htmlText}',
     },
 	] 
