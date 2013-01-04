@@ -37,7 +37,7 @@ for ($i = 0; $i < count($imageMatches[0]); $i++) {
 		// in the original XML the & is replaced by the HTML entity &amp; 
 		// the way it's used in the description it should be a normal link with a & sign
 		$description = preg_replace('/&amp;/', '&', $imageMatches[0][$i]);
-		$description = urlencode($imageMatches[0][$i]);
+//		$description = urlencode($imageMatches[0][$i]);
 		//$description = $imageMatches[0][$i];
 echo "<description>".$description."</description>
 </item>\n";

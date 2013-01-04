@@ -6,8 +6,9 @@ var getContent = function(view, index, item, e) {
  				var rec = view.getStore().getAt(index);
 	 			var photoAlbumURL = rec.data.link;
 	 			// add the feed link to the sensor php xml->rss converter
-//				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
-				var photoAlbumRSS = '/Sensor/sensor.php?albumURL=' + photoAlbumURL;
+				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
+				// deze link is voor de online versie (de Aptana webserver ondersteunt geen PHP zonder de PDT plugin)
+//				var photoAlbumRSS = '/Sensor/sensor.php?albumURL=' + photoAlbumURL;
 				
 				// define a model for the on the fly loaded feed	 			
 	 			Ext.define('photoFeedModel', {
@@ -20,26 +21,9 @@ var getContent = function(view, index, item, e) {
 	 				}
 	 			 ]
 	 			});
-	 			// create a store to use the google feed reader to get the album rss data
-								
-//	 			Ext.define("Sensor.store.photoFeedStore", {
-//					extend: 'Ext.data.Store',
-//				requires: ["photoFeedModel"],
-//	 			config: {
-//				    model: 'photoFeedModel',
-//				    autoLoad: true,
-//				    
-//				    proxy: {
-//				        type: 'jsonp',
-//				        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&q=' + photoAlbumRSS,
-//				        reader: {
-//				            type: 'json',
-//				            rootProperty: 'responseData.feed.entries'
-//				            }
-//				        },        
-//				    },
-//				});
-				
+	 			// create a store to use the google feed reader to get the album rss data												
+	 			// Dit creeert on the fly de store voor de rss feed van het photoalbum wat is geselecteerd
+	 			// in debug mode kun je zien dat de items geladen zijn.
 				var photoFeedStore = new Ext.data.Store({
 //				Ext.create('Ext.data.Store', {
 					model: 'photoFeedModel',
@@ -59,22 +43,73 @@ var getContent = function(view, index, item, e) {
 				});
 				// the actual load of the store
 				photoFeedStore.load();
-				
-//	 						
+
+				// push de shit hieronder in de photoviewid navigationview container.
+				// deze nieuwe container bevat de photo album pagina met een backbutton
 				Ext.ComponentManager.get('photoviewid').push({ 
-					scrollable: 'vertical',
-					id: 'blaah',
-					xtype: 'list',
-					flex:1,
-					styleHtmlContent: true,
-					store: photoFeedStore,
-					itemTpl: '<div style="border:1px solid green">imageLink: {contentSnippet}</div>',
+					xtype: 'container',
+					id: 'photoContainer',
+					scrollable : {
+                    	direction : 'horizontal',
+                    	Useindicators : true,
+                	},
+                	// hele boel configuratie om het mooi te laten snappen en scrollen
+                	// nog niet echt bekeken wat het allemaal doet maar ziet er leuk uit
+                	// ik wil nog uitzoeken of je per image kun snappen op een soort grid
+                	// niet belangrijk nu ;-)
+                	momentumEasing: {
+			            momentum: {
+			                acceleration: 60,
+			                friction: 0.8
+			            },
+			            bounce: {
+			                acceleration: 10,
+			                springTension: 0.1
+			            }
+			        },
+                	// This is used when snapping is turned on, like in a Picker
+			        snapEasing: {
+			            duration: 400,
+			            exponent: 4
+			        },
+			        // This is used when dragging the list out of bounds. E.g. 0.5 causes
+			        // the scroller to move half a pixel for every pixel you drag it as
+			        // soon as you are out of bounds.
+			        outOfBoundRestrictFactor: 0.5,
+                	
+					layout: 'hbox',
+					// dit moeten alle thumbnails worden uit de store (de images toevoegen aan id photoContainer)
+					// het toevoegen moet gebeuren uit de store in het initialize script.
+					items: [
+						{ type: 'container', width: 100, html: 'photo1'},
+						{ type: 'container', width: 100, html: 'photo2'},
+						{ type: 'container', width: 100, html: 'photo3'},
+						{ type: 'container', width: 100, html: 'photo4'},
+						{ type: 'container', width: 100, html: 'photo5'},
+					],
+					// laden van de photoFeedStore images
 					listeners: {
 						initialize: function testFunction() {
-							console.log( photoAlbumURL );
+							console.log( 'initialize container' );
+							Ext.getStore('photoFeedStore').load(function(albumPhotos) {	
+							
+							
+							 // raw.contentSnippet is de cleane url zonder &amp;
+							 //var thumbnail = albumPhotos[0].raw.contentSnippet;
+					 		 // ik gebruik hier even de link omdat google die muk nog cached
+					 		 var thumbnail = albumPhotos[0].raw.link;
+					 		 console.log(albumPhotos.length);
+							 console.log('thumbnail:'+thumbnail);
+							
+							 
+							 Ext.ComponentManager.get('photoContainer').add({
+							 	xtype: 'container',
+							 	html: '<img src='+thumbnail+'></img>',
+							 });
+							 
+					 		});		 		
 						}
 					},
-					
 				});
 				
 				
