@@ -6,7 +6,8 @@ var getContent = function(view, index, item, e) {
  				var rec = view.getStore().getAt(index);
 	 			var photoAlbumURL = rec.data.link;
 	 			// add the feed link to the sensor php xml->rss converter
-				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
+//				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
+				var photoAlbumRSS = '/Sensor/sensor.php?albumURL=' + photoAlbumURL;
 				
 				// define a model for the on the fly loaded feed	 			
 	 			Ext.define('photoFeedModel', {
@@ -59,16 +60,15 @@ var getContent = function(view, index, item, e) {
 				// the actual load of the store
 				photoFeedStore.load();
 				
-				
 //	 						
 				Ext.ComponentManager.get('photoviewid').push({ 
 					scrollable: 'vertical',
-					id: 'detailCard',
+					id: 'blaah',
 					xtype: 'list',
+					flex:1,
 					styleHtmlContent: true,
-//					store: 'SensorNewsStore',
 					store: photoFeedStore,
-					itemTpl: 'imageLink: {content}',
+					itemTpl: '<div style="border:1px solid green">imageLink: {contentSnippet}</div>',
 					listeners: {
 						initialize: function testFunction() {
 							console.log( photoAlbumURL );
