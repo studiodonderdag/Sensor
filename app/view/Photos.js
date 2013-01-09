@@ -82,15 +82,15 @@ var getContent = function(view, index, item, e) {
 					// het toevoegen moet gebeuren uit de store in het initialize script.
 					defaults: {
 						type: 'container',
-						width: 400,   // this is the image container width, container will scroll/bounce back if the with is smaller then the content
+						width: '400',   // this is the image container width, container will scroll/bounce back if the with is smaller then the content				
 					},
 					
 					items: [
-						{ html: 'photo1'},
-						{ html: 'photo2'},
-						{ html: 'photo3'},
-						{ html: 'photo4'},
-						{ html: 'photo5'},
+//						{ html: 'photo1'},
+//						{ html: 'photo2'},
+//						{ html: 'photo3'},
+//						{ html: 'photo4'},
+//						{ html: 'photo5'},
 					],
 					// laden van de photoFeedStore images
 					listeners: {
@@ -98,19 +98,20 @@ var getContent = function(view, index, item, e) {
 							console.log( 'initialize container' );
 							Ext.getStore('photoFeedStore').load(function(albumPhotos) {	
 							
-							
-							 // raw.contentSnippet is de cleane url zonder &amp;
-							 //var thumbnail = albumPhotos[0].raw.contentSnippet;
-					 		 // ik gebruik hier even de link omdat google die muk nog cached
-					 		 var thumbnail = albumPhotos[0].raw.link;
-					 		 console.log(albumPhotos.length);
-							 console.log('thumbnail:'+thumbnail);
+							for (i=0; i < albumPhotos.length; i++)
+								{
+							 	// raw.contentSnippet is de cleane url zonder &amp;
+							 	//var thumbnail = albumPhotos[0].raw.contentSnippet;
+					 			// ik gebruik hier even de link omdat google die muk nog cached
+					 			var thumbnail = albumPhotos[i].raw.link;
+					 			console.log(albumPhotos.length);
+							 	console.log('thumbnail:'+thumbnail);
 							
 							 
-							 Ext.ComponentManager.get('photoContainer').add({
-							 	html: '<img src='+thumbnail+'></img>',
-							 });
-							 
+							 	Ext.ComponentManager.get('photoContainer').add({
+							 		html: '<img src='+thumbnail+'></img>',
+							 	});
+								}
 					 		});		 		
 						}
 					},
