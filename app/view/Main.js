@@ -86,7 +86,7 @@ Ext.define('Sensor.view.Main', {
         scrollable: false,        
         store: "TwitterStore",
         height: 40,                
-        itemTpl: '{htmlText}',
+        itemTpl: '{text}',
     },
 	] 
 } // config

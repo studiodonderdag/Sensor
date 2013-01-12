@@ -34,13 +34,16 @@ Ext.define('Sensor.view.Contact', {
                      		// Linker div met Sensor contact info
                     	 	'<div id="contact-info-left"><p>Nijmegen<br>Kapittelweg 33<br>' +
                      		'Kamer A3.11<br><br>Postbus 6960<br>6503 GL Nijmegen<br>T. (024) 353 03 90<br>' +
-                     		'E. <a href="mailto:sensor@han.nl">sensor@han.nl</a><br>' + 
-                     		'W. <a href="http://www.snsr.nl" target="_blank">snsr.nl</a></p></div>' +
+//                     		'E. <a href="mailto:sensor@han.nl">sensor@han.nl</a><br>' + 
+                     		'E. sensor@han.nl<br>' + 
+//                     		'W. <a href="http://www.snsr.nl" target="_blank">snsr.nl</a></p></div>' +
+                     		'W. snsr.nl</p></div>' +
                     	 	
                      		// Rechter div met Bureau Nassau contact info
                     	 	'<div id="contact-info-right"><p>Arnhem<br>Ruitenberglaan 29<br>' +
                     	 	'Kamer 3.19<br><br>Adverteren ?<br>Bureau Nassau<br>T. (020) 623 09 05<br>' +
-                    	 	'W. <a href="http://www.bureaunassau.nl" target="_blank">bureaunassau.nl</a></p></div>' +
+//                    	 	'W. <a href="http://www.bureaunassau.nl" target="_blank">bureaunassau.nl</a></p></div>' +
+                    	 	'W. bureaunassau.nl</p></div>' +
  							
                      		// facebook share
                      		'<div id="contact-social"><iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/SNSR.HAN&amp;' + 
