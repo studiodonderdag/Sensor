@@ -1,4 +1,5 @@
 
+/* Styling van de photoalbum overview */
 #FotoLijst {
 	background-image: inherit;
 }
@@ -44,7 +45,33 @@
 	overflow:hidden;
 }
 
+/* Styling van de photoalbum pagina */
 
+#FotoAlbum {
+}
 
+#FotoThumbContainer {
+	background-color: white;
+	border: 1px solid #C0C0C0;
+}
 
+.FotoThumb {
+	float: right;
+	border: 1px solid #C0C0C0;
+    display: block; 
+    width: 60px; 
+    height: 60px; 
+    position:relative;
+    margin: 2px;
+    padding: 2px;
+    top: 2px!important;
+    left: 2px!important;
+}
+
+#FotoFullContainer {
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    border:solid 1px #d0d0d0;
+}
 

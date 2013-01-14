@@ -22,7 +22,7 @@ Ext.define('Sensor.view.Main', {
 		xtype: 'carousel',
 		id: 'carousel',
 		flex:1,
-		activeItem: 0,	// start at first item in carousel
+		activeItem: 1,	// start at first item in carousel
 		indicator: true, // carousel navigation indicators
 		// listener voor carousel
 		listeners : {
@@ -60,13 +60,11 @@ Ext.define('Sensor.view.Main', {
 	    {
 				id : 'NewsList', // this needs to be the name of the view xtype	
 				cls: 'menuItemBackground',
-//    			style: 'background-image:url("./resources/images/nieuws.jpg");',
     			html: '<div class="menuItemLabel">Nieuws</div>',
-	    }, // newslist item	
+	    },	
     	{
     			id : 'Photos',
     			cls: 'menuItemBackground',
-//    			style: 'background-image:url("./resources/images/fotos.jpg");',
     			html: '<div class="menuItemLabel">Foto\'s</div>',
     	},
     	{
@@ -78,7 +76,7 @@ Ext.define('Sensor.view.Main', {
     	] // carousel items
 	},
 	{	// bottom container in vbox for lasttweet
-      xtype: "dataview",
+		xtype: "dataview",
 //      disableSelection: true,
       
 		style: 'border: none; display: block;' + 

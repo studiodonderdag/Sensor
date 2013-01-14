@@ -1,5 +1,7 @@
 
-
+var showLargePhoto = function(link) {
+	Ext.ComponentManager.get('FotoFullContainer').setStyle( { backgroundImage : 'url('+ link  +')' } );
+};
 
 var getContent = function(view, index, item, e) {
 				// get the clicked record link
@@ -21,11 +23,8 @@ var getContent = function(view, index, item, e) {
 	 				}
 	 			 ]
 	 			});
-	 			// create a store to use the google feed reader to get the album rss data												
-	 			// Dit creeert on the fly de store voor de rss feed van het photoalbum wat is geselecteerd
-	 			// in debug mode kun je zien dat de items geladen zijn.
-				var photoFeedStore = new Ext.data.Store({
-//				Ext.create('Ext.data.Store', {
+	 			// create the store
+				Ext.create('Ext.data.Store', {
 					model: 'photoFeedModel',
 					storeId: 'photoFeedStore',
 					proxy: {
@@ -38,17 +37,33 @@ var getContent = function(view, index, item, e) {
 			            }
 			        },    
 					listeners: {
-						load: function(photoFeedStore, r){console.log(r)}
+//						log the loaded foto store array
+//						load: function(photoFeedStore, r){console.log(r)}
 					}
 				});
-				// the actual load of the store
-				photoFeedStore.load();
 
 				// push de shit hieronder in de photoviewid navigationview container.
 				// deze nieuwe container bevat de photo album pagina met een backbutton
-				Ext.ComponentManager.get('photoviewid').push({ 
+				Ext.ComponentManager.get('photoviewid').push({					
+//				xtype: 'container',
+				id: 'FotoAlbum',
+				layout: {
+					type: 'vbox',
+					scrollable: true,
+					fullscreen: true,
+					styleHtmlContent : true,
+				},		
+				items: [
+				{
+					flex:1,
 					xtype: 'container',
-					id: 'photoContainer',
+					html: '',
+					id: 'FotoFullContainer',
+				},
+				{
+					xtype: 'container',
+					id: 'FotoThumbContainer',
+					height: 70,
 					scrollable : {
                     	direction : 'horizontal',
                     	Useindicators : true,
@@ -82,41 +97,34 @@ var getContent = function(view, index, item, e) {
 					// het toevoegen moet gebeuren uit de store in het initialize script.
 					defaults: {
 						type: 'container',
-						width: '400',   // this is the image container width, container will scroll/bounce back if the with is smaller then the content				
+						width: '400',   // this is the image container width, container will scroll/bounce back if the with is smaller then the content
 					},
 					
 					items: [
-//						{ html: 'photo1'},
-//						{ html: 'photo2'},
-//						{ html: 'photo3'},
-//						{ html: 'photo4'},
-//						{ html: 'photo5'},
+//						{ html: 'images could not be loaded'},
 					],
 					// laden van de photoFeedStore images
 					listeners: {
-						initialize: function testFunction() {
-							console.log( 'initialize container' );
+						initialize: function loadThumbNails() {
+//							console.log( 'initialize container' );
 							Ext.getStore('photoFeedStore').load(function(albumPhotos) {	
 							
 							for (i=0; i < albumPhotos.length; i++)
 								{
-							 	// raw.contentSnippet is de cleane url zonder &amp;
-							 	//var thumbnail = albumPhotos[0].raw.contentSnippet;
-					 			// ik gebruik hier even de link omdat google die muk nog cached
-					 			var thumbnail = albumPhotos[i].raw.link;
-					 			console.log(albumPhotos.length);
-							 	console.log('thumbnail:'+thumbnail);
-							
-							 
-							 	Ext.ComponentManager.get('photoContainer').add({
-							 		html: '<img src='+thumbnail+'></img>',
-							 	});
+						 			var thumbnail = albumPhotos[i].raw.content;
+						 			var largePhoto = albumPhotos[i].raw.link;
+								 	Ext.ComponentManager.get('FotoThumbContainer').add({
+								 		html: '<img onClick=showLargePhoto("'+ largePhoto +'") class="FotoThumb" src='+thumbnail+'></img>',
+								 	});
 								}
 					 		});		 		
 						}
 					},
-				});
 				
+				}
+				],
+				// end of pushed container
+				});
 				
 };
 
