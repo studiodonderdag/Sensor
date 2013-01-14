@@ -1,6 +1,44 @@
 
-var showLargePhoto = function(link) {
-	Ext.ComponentManager.get('FotoFullContainer').setStyle( { backgroundImage : 'url('+ link  +')' } );
+
+var showShareContainer = function(photoLink, photoTitle) {
+	var myShareContainer = Ext.ComponentManager.get('shareContainer');
+	// remove any current items
+	myShareContainer.removeAll(true, true);
+	myShareContainer.add({
+		html: '<div class="share-text">Deel deze foto:</div>' +
+		// facebook share met een div en een plaatje (css)
+		'<div class="facebook-button"><a href="http://www.facebook.com/sharer.php?u='+ photoLink +'&ampt='+ photoTitle + '" target="_blank"></a></div>'					
+		// twitter share met een div en een plaatje (css)
+		+ '<div class="tweet-button"><a href="https://twitter.com/intent/tweet?text='+ photoTitle + ' - ' + photoLink +'" target="_blank"></a></div>'					
+		// Mail share met een div en een plaatje (css)
+		+ '<div class="mail-button"><a rel="nofollow" href="mailto:?body=' + photoLink +' &subject='+ photoTitle + '"></a>'
+	});	
+}
+
+
+var showLargePhoto = function(photoLink, photoTitle) {	
+	var myContainer = Ext.ComponentManager.get('FotoFullContainer');
+	// remove any current items
+	myContainer.removeAll(true, true);
+
+	// set load mask
+	myContainer.setMasked({xtype:'loadmask',message:'Loading Image'});
+	// add selected image
+	myContainer.setStyle( { backgroundImage : 'url('+ photoLink  +')' } );		
+	// remove load mask
+	myContainer.setMasked(false);
+	
+//	myContainer.add({
+//			listeners: {
+//					tap: function(){ 
+//						console.log('dsds');
+//					},
+//					initialize: function() {
+//						console.log(photoLink);
+//					},	
+//			}
+//	});
+	showShareContainer( escape(photoLink) , photoTitle);
 };
 
 var getContent = function(view, index, item, e) {
@@ -62,6 +100,11 @@ var getContent = function(view, index, item, e) {
 				},
 				{
 					xtype: 'container',
+					id: 'shareContainer',
+					height: 40,
+				},
+				{
+					xtype: 'container',
 					id: 'FotoThumbContainer',
 					height: 70,
 					scrollable : {
@@ -106,15 +149,22 @@ var getContent = function(view, index, item, e) {
 					// laden van de photoFeedStore images
 					listeners: {
 						initialize: function loadThumbNails() {
-//							console.log( 'initialize container' );
 							Ext.getStore('photoFeedStore').load(function(albumPhotos) {	
+							// load first image into FotoFullContainer
+							var myContainer = Ext.ComponentManager.get('FotoFullContainer');
+							myContainer.setStyle( { backgroundImage : 'url('+ albumPhotos[0].raw.link  +')' } );
 							
+							// load first shareContainer
+							showShareContainer(escape(albumPhotos[0].raw.link), 'foto');
+							// fill container with thumbnails	
 							for (i=0; i < albumPhotos.length; i++)
 								{
 						 			var thumbnail = albumPhotos[i].raw.content;
 						 			var largePhoto = albumPhotos[i].raw.link;
+						 			//var titlePhoto = albumPhotos[i].raw.title;
+						 			var titlePhoto = 'foto';
 								 	Ext.ComponentManager.get('FotoThumbContainer').add({
-								 		html: '<img onClick=showLargePhoto("'+ largePhoto +'") class="FotoThumb" src='+thumbnail+'></img>',
+								 		html: '<img onClick=showLargePhoto("'+ largePhoto +'","'+ titlePhoto +'") class="FotoThumb" src='+thumbnail+'></img>',
 								 	});
 								}
 					 		});		 		
