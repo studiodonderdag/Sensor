@@ -11,7 +11,6 @@
 	max-width: 460px;
 }
 
-
 .FotoListItemBackground {
 	width:29%;
 	height:100%;
@@ -55,13 +54,10 @@
 }
 
 #FotoThumbContainer {
-/*	background-color: white;*/
-/*	border: 1px solid #C0C0C0;*/
 }
 
 .FotoThumb {
 	float: right;
-/*	border: 1px solid #C0C0C0;*/
     display: block; 
     width: 60px; 
     height: 60px; 
@@ -78,9 +74,6 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: center;
-/*    border:solid 1px #d0d0d0;*/
-	-webkit-user-select: auto;
-	-webkit-touch-callout: inherit;
 }
 
 #shareContainer {
@@ -106,7 +99,6 @@
     border: none;
     float: right;	
 }
-
 
 #shareContainer .tweet-button a {
     background-image: url('../images/button_twitter.png');

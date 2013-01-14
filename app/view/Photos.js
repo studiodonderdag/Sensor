@@ -4,7 +4,9 @@ var showShareContainer = function(photoLink, photoTitle) {
 	var myShareContainer = Ext.ComponentManager.get('shareContainer');
 	// remove any current items
 	myShareContainer.removeAll(true, true);
+	
 	myShareContainer.add({
+				
 		html: '<div class="share-text">Deel deze foto:</div>' +
 		// facebook share met een div en een plaatje (css)
 		'<div class="facebook-button"><a href="http://www.facebook.com/sharer.php?u='+ photoLink +'&ampt='+ photoTitle + '" target="_blank"></a></div>'					
@@ -28,16 +30,6 @@ var showLargePhoto = function(photoLink, photoTitle) {
 	// remove load mask
 	myContainer.setMasked(false);
 	
-//	myContainer.add({
-//			listeners: {
-//					tap: function(){ 
-//						console.log('dsds');
-//					},
-//					initialize: function() {
-//						console.log(photoLink);
-//					},	
-//			}
-//	});
 	showShareContainer( escape(photoLink) , photoTitle);
 };
 
@@ -74,13 +66,9 @@ var getContent = function(view, index, item, e) {
 			            	rootProperty: 'responseData.feed.entries'
 			            }
 			        },    
-					listeners: {
-//						log the loaded foto store array
-//						load: function(photoFeedStore, r){console.log(r)}
-					}
 				});
 
-				// push de shit hieronder in de photoviewid navigationview container.
+				// push de code hieronder in de photoviewid navigationview container.
 				// deze nieuwe container bevat de photo album pagina met een backbutton
 				Ext.ComponentManager.get('photoviewid').push({					
 //				xtype: 'container',
@@ -111,36 +99,11 @@ var getContent = function(view, index, item, e) {
                     	direction : 'horizontal',
                     	Useindicators : true,
                 	},
-                	// hele boel configuratie om het mooi te laten snappen en scrollen
-                	// nog niet echt bekeken wat het allemaal doet maar ziet er leuk uit
-                	// ik wil nog uitzoeken of je per image kun snappen op een soort grid
-                	// niet belangrijk nu ;-)
-                	momentumEasing: {
-			            momentum: {
-			                acceleration: 60,
-			                friction: 0.8
-			            },
-			            bounce: {
-			                acceleration: 10,
-			                springTension: 0.1
-			            }
-			        },
-                	// This is used when snapping is turned on, like in a Picker
-			        snapEasing: {
-			            duration: 400,
-			            exponent: 4
-			        },
-			        // This is used when dragging the list out of bounds. E.g. 0.5 causes
-			        // the scroller to move half a pixel for every pixel you drag it as
-			        // soon as you are out of bounds.
-			        outOfBoundRestrictFactor: 0.5,
                 	
 					layout: 'hbox',
-					// dit moeten alle thumbnails worden uit de store (de images toevoegen aan id photoContainer)
-					// het toevoegen moet gebeuren uit de store in het initialize script.
 					defaults: {
 						type: 'container',
-						width: '400',   // this is the image container width, container will scroll/bounce back if the with is smaller then the content
+						width: '400',   // this is the image container width, container will scroll/bounce back if the width is smaller then the content
 					},
 					
 					items: [
