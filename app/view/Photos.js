@@ -4,9 +4,7 @@ var showShareContainer = function(photoLink, photoTitle) {
 	var myShareContainer = Ext.ComponentManager.get('shareContainer');
 	// remove any current items
 	myShareContainer.removeAll(true, true);
-	
-	myShareContainer.add({
-				
+	myShareContainer.add({				
 		html: '<div class="share-text">Deel deze foto:</div>' +
 		// facebook share met een div en een plaatje (css)
 		'<div class="facebook-button"><a href="http://www.facebook.com/sharer.php?u='+ photoLink +'&ampt='+ photoTitle + '" target="_blank"></a></div>'					
@@ -17,19 +15,21 @@ var showShareContainer = function(photoLink, photoTitle) {
 	});	
 }
 
-
 var showLargePhoto = function(photoLink, photoTitle) {	
 	var myContainer = Ext.ComponentManager.get('FotoFullContainer');
 	// remove any current items
 	myContainer.removeAll(true, true);
-
-	// set load mask
+	// set loading mask
 	myContainer.setMasked({xtype:'loadmask',message:'Loading Image'});
-	// add selected image
-	myContainer.setStyle( { backgroundImage : 'url('+ photoLink  +')' } );		
-	// remove load mask
-	myContainer.setMasked(false);
-	
+	img = new Image();
+	img.src = photoLink;
+	img.onload = function() {
+		// remove loading mask
+		myContainer.setMasked(false);
+		// set new image as background image
+		myContainer.setStyle( { backgroundImage : 'url('+ photoLink  +')' } );
+	};
+	// update share container
 	showShareContainer( escape(photoLink) , photoTitle);
 };
 
@@ -110,13 +110,11 @@ var getContent = function(view, index, item, e) {
 //						{ html: 'images could not be loaded'},
 					],
 					// laden van de photoFeedStore images
-					listeners: {
-						initialize: function loadThumbNails() {
+					listeners: {											
+						initialize: function loadThumbNails() {							
 							Ext.getStore('photoFeedStore').load(function(albumPhotos) {	
 							// load first image into FotoFullContainer
-							var myContainer = Ext.ComponentManager.get('FotoFullContainer');
-							myContainer.setStyle( { backgroundImage : 'url('+ albumPhotos[0].raw.link  +')' } );
-							
+							showLargePhoto(albumPhotos[0].raw.link, 'foto');						
 							// load first shareContainer
 							showShareContainer(escape(albumPhotos[0].raw.link), 'foto');
 							// fill container with thumbnails	
