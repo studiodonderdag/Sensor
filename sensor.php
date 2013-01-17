@@ -9,10 +9,23 @@
 *
 */
 
+
 // $_GET is used to het the albumURL value
 $albumURL = $_GET["albumURL"];
 // use the wget shell commando to receive the album XML
-$html = shell_exec ("wget -N -O - $albumURL ");
+// $html = shell_exec ("wget -N -O - $albumURL ");
+// add php file caching for the album XML, the wget puts a strain on the Roxen server
+// MD5 hash van URL -> cachfile name
+$cache_file = '/tmp/'.md5($albumURL).'.cache';
+if ( file_exists($cache_file) ) { 
+   // Don't bother refreshing, just use the file as-is.
+   $html = file_get_contents($cache_file);
+} else {
+   // and also save it over our cache for next time.
+   $html = file_get_contents($albumURL);
+   file_put_contents($cache_file, $html, LOCK_EX);
+}
+
 // remove/replace the <a href tags, so only the URL remains
 $html = preg_replace('/(\<a.*?href=")(.*?)(">)/is', '$2', $html);
 // remove/replace the <img tags, so only the URL remains
@@ -43,10 +56,10 @@ echo "<description>".$description."</description>
 </item>\n";
 	} else {
 		// the even lines contain the large image link
-		$title = $imageMatches[0][$i];
+		$link = $imageMatches[0][$i];
 echo "<item>
 <title>photo</title>
-<link>".$title."</link>\n";
+<link>".$link."</link>\n";
 	}
 }
 

@@ -15,25 +15,13 @@ var getContent = function(view, index, item, e) {
 				Ext.ComponentManager.get('navigationviewid').push({ 
 					scrollable: 'vertical',
 					id: 'detailCard',
-					html: content + '<hr class="newshr">' +
-					
-					// facebook share iframe (werkend)
-					//'<iframe src="http://www.facebook.com/plugins/like.php?href=' + rec.data.link + '&amp;' + 
-					//'layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light" ' +
-					//'scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; height:20px; width:85px;"></iframe>' 
-					
+					html: content + '<hr class="newshr">'
 					// facebook share met een div en een plaatje (css)
-					'<div id="facebook-button"><a href="http://www.facebook.com/sharer.php?u='+ rec.data.link +'&ampt='+ rec.data.title + '" target="_blank"></a></div>'
-							
-					// twitter share iframe (werkend)
-					//+ '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='+ rec.data.link +'; &text='+ rec.data.title +' '+ rec.data.link +'" style="width:115px; height:21px;"></iframe>'
-					
+					+ '<div id="facebook-button"><a href="http://www.facebook.com/sharer.php?u='+ rec.data.link +'&ampt='+ rec.data.title + '" target="_blank"></a></div>'
 					// twitter share met een div en een plaatje (css)
 					+ '<div id="tweet-button"><a href="https://twitter.com/intent/tweet?text='+ rec.data.title + ' - ' + rec.data.link +'" target="_blank"></a></div>'
-					
 					// Mail share met een div en een plaatje (css)
 					+ '<div id="mail-button"><a rel="nofollow" href="mailto:?body=' + rec.data.link +' &subject='+ rec.data.title + '"></a>'
-					
 				})
 };
 

@@ -16,19 +16,21 @@ var showShareContainer = function(photoLink, photoTitle) {
 }
 
 var showLargePhoto = function(photoLink, photoTitle) {	
+	
 	var myContainer = Ext.ComponentManager.get('FotoFullContainer');
 	// remove any current items
 	myContainer.removeAll(true, true);
-	// set loading mask
-	myContainer.setMasked({xtype:'loadmask',message:'Loading Image'});
-	img = new Image();
-	img.src = photoLink;
-	img.onload = function() {
-		// remove loading mask
-		myContainer.setMasked(false);
-		// set new image as background image
-		myContainer.setStyle( { backgroundImage : 'url('+ photoLink  +')' } );
-	};
+	maskImageLoad( 'FotoFullContainer', photoLink );
+//	myContainer.element.on ({
+//		tap: function() {
+//			console.log(img.src);		
+//			Ext.Msg.alert('Download', '<a target=_new href='+img.src+'>link</a>', Ext.emptyFn);		
+//			window.win = open (img.src);
+//			var url=img.src;  
+//			window.open(url,'_blank');
+//		}
+//	}); 
+	
 	// update share container
 	showShareContainer( escape(photoLink) , photoTitle);
 };
@@ -38,9 +40,10 @@ var getContent = function(view, index, item, e) {
  				var rec = view.getStore().getAt(index);
 	 			var photoAlbumURL = rec.data.link;
 	 			// add the feed link to the sensor php xml->rss converter
+	 			// Pas hieronder de URL aan
 				var photoAlbumRSS = 'http://studiodonderdag.nl/sensor.php?albumURL=' + photoAlbumURL;
 				// deze link is voor de online versie (de Aptana webserver ondersteunt geen PHP zonder de PDT plugin)
-//				var photoAlbumRSS = '/Sensor/sensor.php?albumURL=' + photoAlbumURL;
+//				var photoAlbumRSS = '/sensor.php?albumURL=' + photoAlbumURL;
 				
 				// define a model for the on the fly loaded feed	 			
 	 			Ext.define('photoFeedModel', {
@@ -49,7 +52,7 @@ var getContent = function(view, index, item, e) {
 	 				{
 	 				 name: 'contentSnippet',  type: 'string',
 	 				 name: 'content',  type: 'string',
-	 				 name: 'link',  type: 'string'
+	 				 name: 'link',  type: 'string',
 	 				}
 	 			 ]
 	 			});
@@ -59,7 +62,7 @@ var getContent = function(view, index, item, e) {
 					storeId: 'photoFeedStore',
 					proxy: {
 						type: 'jsonp',
-						// the num number should be the same as the amount of images in the album
+						// the num number should be larger or the same as the amount of images in the album
 						url :'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=100&q=' + photoAlbumRSS,
 						reader: {
 			            	type: 'json',
@@ -131,7 +134,6 @@ var getContent = function(view, index, item, e) {
 					 		});		 		
 						}
 					},
-				
 				}
 				],
 				// end of pushed container

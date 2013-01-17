@@ -1,3 +1,4 @@
+// Put a href tags around the http link
 function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url) {

@@ -29,15 +29,13 @@ Ext.define('Sensor.view.Main', {
 		 initialize: {
 		 	fn: function() {
 			// Set NewsList background Image
-		 	Ext.getStore('SensorNewsStore').load(function(articles) {	
-		 		 var lastArticleImage = articles[0].data.articleRoot + '/more.jpg';
-				 Ext.getCmp('NewsList').setStyle( { backgroundImage : 'url('+ lastArticleImage  +')' } );		 		
-		 		});		 		
+		 	Ext.getStore('SensorNewsStore').load(function(articles) {
+		 		maskImageLoad( 'NewsList', articles[0].data.articleRoot + '/more.jpg' );		 		
+		 	});		 		
 			// Set Photos background Image
-		 	Ext.getStore('SensorPhotoStore').load(function(albums) {	
-		 		 var lastArticleImage = albums[0].data.articleImage;
-				 Ext.getCmp('Photos').setStyle( { backgroundImage : 'url('+ lastArticleImage  +')' } );		 		
-		 		});
+		 	Ext.getStore('SensorPhotoStore').load(function(albums) {
+		 		maskImageLoad( 'Photos', albums[0].data.articleImage );
+		 	});
 		 		
 		 	} // function
 		 } // initialize

@@ -54,22 +54,27 @@
 }
 
 #FotoThumbContainer {
+	width:auto;
+	overflow:visible;
 }
 
-.FotoThumb {
-	float: right;
+#FotoThumbContainer .FotoThumb {
+	float: left;
     display: block; 
     width: 60px; 
     height: 60px; 
     position:relative;
     margin: 2px;
-    padding: 2px;
     top: 2px!important;
     left: 2px!important;
+    -webkit-border-radius: 0.4em !important;
+    border-radius: 0.4em !important;
 }
 
-
 #FotoFullContainer {
+/*	border: 1px solid red;*/
+	-webkit-user-select : auto;
+	-webkit-touch-callout : inherit;
 	margin:5px;
     background-repeat: no-repeat;
     background-size: auto 100%;
